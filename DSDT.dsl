@@ -2111,17 +2111,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Name (RPAV, Zero)
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
-                    Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
-                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     While (One)
                     {
-                        _T_0 = ToInteger (Arg0)
-                        If ((_T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+                        T_0 = ToInteger (Arg0)
+                        If ((T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                         {
                             While (One)
                             {
-                                _T_1 = ToInteger (Arg2)
-                                If ((_T_1 == Zero))
+                                T_1 = ToInteger (Arg2)
+                                If ((T_1 == Zero))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -2143,7 +2143,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         Return (Zero)
                                     }
                                 }
-                                ElseIf ((_T_1 == 0x04))
+                                ElseIf ((T_1 == 0x04))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -2165,7 +2165,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         }
                                     }
                                 }
-                                ElseIf ((_T_1 == 0x06))
+                                ElseIf ((T_1 == 0x06))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -2366,17 +2366,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Name (RPAV, Zero)
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
-                    Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
-                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     While (One)
                     {
-                        _T_0 = ToInteger (Arg0)
-                        If ((_T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+                        T_0 = ToInteger (Arg0)
+                        If ((T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                         {
                             While (One)
                             {
-                                _T_1 = ToInteger (Arg2)
-                                If ((_T_1 == Zero))
+                                T_1 = ToInteger (Arg2)
+                                If ((T_1 == Zero))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -2398,7 +2398,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         Return (Zero)
                                     }
                                 }
-                                ElseIf ((_T_1 == 0x04))
+                                ElseIf ((T_1 == 0x04))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -2420,7 +2420,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         }
                                     }
                                 }
-                                ElseIf ((_T_1 == 0x06))
+                                ElseIf ((T_1 == 0x06))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -2611,17 +2611,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Name (RPAV, Zero)
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
-                    Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
-                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     While (One)
                     {
-                        _T_0 = ToInteger (Arg0)
-                        If ((_T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+                        T_0 = ToInteger (Arg0)
+                        If ((T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                         {
                             While (One)
                             {
-                                _T_1 = ToInteger (Arg2)
-                                If ((_T_1 == Zero))
+                                T_1 = ToInteger (Arg2)
+                                If ((T_1 == Zero))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -2643,7 +2643,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         Return (Zero)
                                     }
                                 }
-                                ElseIf ((_T_1 == 0x04))
+                                ElseIf ((T_1 == 0x04))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -2665,7 +2665,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         }
                                     }
                                 }
-                                ElseIf ((_T_1 == 0x06))
+                                ElseIf ((T_1 == 0x06))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -2856,17 +2856,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Name (RPAV, Zero)
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
-                    Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
-                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     While (One)
                     {
-                        _T_0 = ToInteger (Arg0)
-                        If ((_T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+                        T_0 = ToInteger (Arg0)
+                        If ((T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                         {
                             While (One)
                             {
-                                _T_1 = ToInteger (Arg2)
-                                If ((_T_1 == Zero))
+                                T_1 = ToInteger (Arg2)
+                                If ((T_1 == Zero))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -2888,7 +2888,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         Return (Zero)
                                     }
                                 }
-                                ElseIf ((_T_1 == 0x04))
+                                ElseIf ((T_1 == 0x04))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -2910,7 +2910,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         }
                                     }
                                 }
-                                ElseIf ((_T_1 == 0x06))
+                                ElseIf ((T_1 == 0x06))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -3101,17 +3101,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Name (RPAV, Zero)
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
-                    Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
-                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     While (One)
                     {
-                        _T_0 = ToInteger (Arg0)
-                        If ((_T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+                        T_0 = ToInteger (Arg0)
+                        If ((T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                         {
                             While (One)
                             {
-                                _T_1 = ToInteger (Arg2)
-                                If ((_T_1 == Zero))
+                                T_1 = ToInteger (Arg2)
+                                If ((T_1 == Zero))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -3133,7 +3133,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         Return (Zero)
                                     }
                                 }
-                                ElseIf ((_T_1 == 0x04))
+                                ElseIf ((T_1 == 0x04))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -3155,7 +3155,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         }
                                     }
                                 }
-                                ElseIf ((_T_1 == 0x06))
+                                ElseIf ((T_1 == 0x06))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -4953,17 +4953,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Name (RPAV, Zero)
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
-                    Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
-                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     While (One)
                     {
-                        _T_0 = ToInteger (Arg0)
-                        If ((_T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+                        T_0 = ToInteger (Arg0)
+                        If ((T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                         {
                             While (One)
                             {
-                                _T_1 = ToInteger (Arg2)
-                                If ((_T_1 == Zero))
+                                T_1 = ToInteger (Arg2)
+                                If ((T_1 == Zero))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -4985,7 +4985,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         Return (Zero)
                                     }
                                 }
-                                ElseIf ((_T_1 == 0x04))
+                                ElseIf ((T_1 == 0x04))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -5007,7 +5007,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         }
                                     }
                                 }
-                                ElseIf ((_T_1 == 0x06))
+                                ElseIf ((T_1 == 0x06))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -5221,17 +5221,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Name (RPAV, Zero)
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
-                    Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
-                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     While (One)
                     {
-                        _T_0 = ToInteger (Arg0)
-                        If ((_T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+                        T_0 = ToInteger (Arg0)
+                        If ((T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                         {
                             While (One)
                             {
-                                _T_1 = ToInteger (Arg2)
-                                If ((_T_1 == Zero))
+                                T_1 = ToInteger (Arg2)
+                                If ((T_1 == Zero))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -5253,7 +5253,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         Return (Zero)
                                     }
                                 }
-                                ElseIf ((_T_1 == 0x04))
+                                ElseIf ((T_1 == 0x04))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -5275,7 +5275,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         }
                                     }
                                 }
-                                ElseIf ((_T_1 == 0x06))
+                                ElseIf ((T_1 == 0x06))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -5518,17 +5518,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Name (RPAV, Zero)
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
-                    Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
-                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     While (One)
                     {
-                        _T_0 = ToInteger (Arg0)
-                        If ((_T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+                        T_0 = ToInteger (Arg0)
+                        If ((T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                         {
                             While (One)
                             {
-                                _T_1 = ToInteger (Arg2)
-                                If ((_T_1 == Zero))
+                                T_1 = ToInteger (Arg2)
+                                If ((T_1 == Zero))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -5550,7 +5550,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         Return (Zero)
                                     }
                                 }
-                                ElseIf ((_T_1 == 0x04))
+                                ElseIf ((T_1 == 0x04))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -5572,7 +5572,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         }
                                     }
                                 }
-                                ElseIf ((_T_1 == 0x06))
+                                ElseIf ((T_1 == 0x06))
                                 {
                                     If ((Arg1 == 0x02))
                                     {
@@ -6238,13 +6238,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                         Alias (SBV1, SDGV)
                         Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                         {
-                            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                            Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                             If ((Arg0 == ToUUID ("a5fc708f-8775-4ba6-bd0c-ba90a1ec72f8")))
                             {
                                 While (One)
                                 {
-                                    _T_0 = ToInteger (Arg2)
-                                    If ((_T_0 == Zero))
+                                    T_0 = ToInteger (Arg2)
+                                    If ((T_0 == Zero))
                                     {
                                         If ((Arg1 == One))
                                         {
@@ -6261,7 +6261,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                             })
                                         }
                                     }
-                                    ElseIf ((_T_0 == One))
+                                    ElseIf ((T_0 == One))
                                     {
                                         If ((SDGV == 0xFF))
                                         {
@@ -6272,7 +6272,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                             Return (One)
                                         }
                                     }
-                                    ElseIf ((_T_0 == 0x02))
+                                    ElseIf ((T_0 == 0x02))
                                     {
                                         Return (SDGV)
                                     }
@@ -6316,13 +6316,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                         Alias (SBV2, SDGV)
                         Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                         {
-                            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                            Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                             If ((Arg0 == ToUUID ("a5fc708f-8775-4ba6-bd0c-ba90a1ec72f8")))
                             {
                                 While (One)
                                 {
-                                    _T_0 = ToInteger (Arg2)
-                                    If ((_T_0 == Zero))
+                                    T_0 = ToInteger (Arg2)
+                                    If ((T_0 == Zero))
                                     {
                                         If ((Arg1 == One))
                                         {
@@ -6339,7 +6339,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                             })
                                         }
                                     }
-                                    ElseIf ((_T_0 == One))
+                                    ElseIf ((T_0 == One))
                                     {
                                         If ((SDGV == 0xFF))
                                         {
@@ -6350,7 +6350,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                             Return (One)
                                         }
                                     }
-                                    ElseIf ((_T_0 == 0x02))
+                                    ElseIf ((T_0 == 0x02))
                                     {
                                         Return (SDGV)
                                     }
@@ -6394,13 +6394,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                         Alias (SBV1, SDGV)
                         Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                         {
-                            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                            Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                             If ((Arg0 == ToUUID ("a5fc708f-8775-4ba6-bd0c-ba90a1ec72f8")))
                             {
                                 While (One)
                                 {
-                                    _T_0 = ToInteger (Arg2)
-                                    If ((_T_0 == Zero))
+                                    T_0 = ToInteger (Arg2)
+                                    If ((T_0 == Zero))
                                     {
                                         If ((Arg1 == One))
                                         {
@@ -6417,7 +6417,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                             })
                                         }
                                     }
-                                    ElseIf ((_T_0 == One))
+                                    ElseIf ((T_0 == One))
                                     {
                                         If ((SDGV == 0xFF))
                                         {
@@ -6428,7 +6428,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                             Return (One)
                                         }
                                     }
-                                    ElseIf ((_T_0 == 0x02))
+                                    ElseIf ((T_0 == 0x02))
                                     {
                                         Return (SDGV)
                                     }
@@ -6472,13 +6472,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                         Alias (SBV2, SDGV)
                         Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                         {
-                            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                            Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                             If ((Arg0 == ToUUID ("a5fc708f-8775-4ba6-bd0c-ba90a1ec72f8")))
                             {
                                 While (One)
                                 {
-                                    _T_0 = ToInteger (Arg2)
-                                    If ((_T_0 == Zero))
+                                    T_0 = ToInteger (Arg2)
+                                    If ((T_0 == Zero))
                                     {
                                         If ((Arg1 == One))
                                         {
@@ -6495,7 +6495,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                             })
                                         }
                                     }
-                                    ElseIf ((_T_0 == One))
+                                    ElseIf ((T_0 == One))
                                     {
                                         If ((SDGV == 0xFF))
                                         {
@@ -6506,7 +6506,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                             Return (One)
                                         }
                                     }
-                                    ElseIf ((_T_0 == 0x02))
+                                    ElseIf ((T_0 == 0x02))
                                     {
                                         Return (SDGV)
                                     }
@@ -6684,13 +6684,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                         Alias (SBV1, SDGV)
                         Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                         {
-                            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                            Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                             If ((Arg0 == ToUUID ("a5fc708f-8775-4ba6-bd0c-ba90a1ec72f8")))
                             {
                                 While (One)
                                 {
-                                    _T_0 = ToInteger (Arg2)
-                                    If ((_T_0 == Zero))
+                                    T_0 = ToInteger (Arg2)
+                                    If ((T_0 == Zero))
                                     {
                                         If ((Arg1 == One))
                                         {
@@ -6707,7 +6707,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                             })
                                         }
                                     }
-                                    ElseIf ((_T_0 == One))
+                                    ElseIf ((T_0 == One))
                                     {
                                         If ((SDGV == 0xFF))
                                         {
@@ -6718,7 +6718,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                             Return (One)
                                         }
                                     }
-                                    ElseIf ((_T_0 == 0x02))
+                                    ElseIf ((T_0 == 0x02))
                                     {
                                         Return (SDGV)
                                     }
@@ -6762,13 +6762,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                         Alias (SBV2, SDGV)
                         Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                         {
-                            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                            Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                             If ((Arg0 == ToUUID ("a5fc708f-8775-4ba6-bd0c-ba90a1ec72f8")))
                             {
                                 While (One)
                                 {
-                                    _T_0 = ToInteger (Arg2)
-                                    If ((_T_0 == Zero))
+                                    T_0 = ToInteger (Arg2)
+                                    If ((T_0 == Zero))
                                     {
                                         If ((Arg1 == One))
                                         {
@@ -6785,7 +6785,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                             })
                                         }
                                     }
-                                    ElseIf ((_T_0 == One))
+                                    ElseIf ((T_0 == One))
                                     {
                                         If ((SDGV == 0xFF))
                                         {
@@ -6796,7 +6796,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                             Return (One)
                                         }
                                     }
-                                    ElseIf ((_T_0 == 0x02))
+                                    ElseIf ((T_0 == 0x02))
                                     {
                                         Return (SDGV)
                                     }
@@ -8755,40 +8755,40 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
     Method (UXDV, 1, Serialized)
     {
-        Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+        Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
         Local0 = 0xFF
         While (One)
         {
-            _T_0 = (Arg0 + Zero)
-            If ((_T_0 == 0x03F8))
+            T_0 = (Arg0 + Zero)
+            If ((T_0 == 0x03F8))
             {
                 Local0 = Zero
             }
-            ElseIf ((_T_0 == 0x02F8))
+            ElseIf ((T_0 == 0x02F8))
             {
                 Local0 = One
             }
-            ElseIf ((_T_0 == 0x0220))
+            ElseIf ((T_0 == 0x0220))
             {
                 Local0 = 0x02
             }
-            ElseIf ((_T_0 == 0x0228))
+            ElseIf ((T_0 == 0x0228))
             {
                 Local0 = 0x03
             }
-            ElseIf ((_T_0 == 0x0238))
+            ElseIf ((T_0 == 0x0238))
             {
                 Local0 = 0x04
             }
-            ElseIf ((_T_0 == 0x02E8))
+            ElseIf ((T_0 == 0x02E8))
             {
                 Local0 = 0x05
             }
-            ElseIf ((_T_0 == 0x0338))
+            ElseIf ((T_0 == 0x0338))
             {
                 Local0 = 0x06
             }
-            ElseIf ((_T_0 == 0x03E8))
+            ElseIf ((T_0 == 0x03E8))
             {
                 Local0 = 0x07
             }
@@ -8801,11 +8801,11 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
     Method (RRIO, 4, Serialized)
     {
-        Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+        Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
         While (One)
         {
-            _T_0 = (Arg0 + Zero)
-            If ((_T_0 == Zero))
+            T_0 = (Arg0 + Zero)
+            If ((T_0 == Zero))
             {
                 CALE = Zero
                 Local0 = UXDV (Arg2)
@@ -8819,7 +8819,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     CALE = One
                 }
             }
-            ElseIf ((_T_0 == One))
+            ElseIf ((T_0 == One))
             {
                 CBLE = Zero
                 Local0 = UXDV (Arg2)
@@ -8833,7 +8833,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     CBLE = One
                 }
             }
-            ElseIf ((_T_0 == 0x02))
+            ElseIf ((T_0 == 0x02))
             {
                 LTLE = Zero
                 If ((Arg2 == 0x0378))
@@ -8856,7 +8856,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     LTLE = One
                 }
             }
-            ElseIf ((_T_0 == 0x03))
+            ElseIf ((T_0 == 0x03))
             {
                 FDLE = Zero
                 If ((Arg2 == 0x03F0))
@@ -8874,7 +8874,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     FDLE = One
                 }
             }
-            ElseIf ((_T_0 == 0x08))
+            ElseIf ((T_0 == 0x08))
             {
                 If ((Arg2 == 0x0200))
                 {
@@ -8900,7 +8900,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     }
                 }
             }
-            ElseIf ((_T_0 == 0x09))
+            ElseIf ((T_0 == 0x09))
             {
                 If ((Arg2 == 0x0200))
                 {
@@ -8926,7 +8926,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     }
                 }
             }
-            ElseIf ((_T_0 == 0x0A))
+            ElseIf ((T_0 == 0x0A))
             {
                 If (((Arg2 == 0x60) || (Arg2 == 0x64)))
                 {
@@ -8940,7 +8940,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     }
                 }
             }
-            ElseIf ((_T_0 == 0x0B))
+            ElseIf ((T_0 == 0x0B))
             {
                 If (((Arg2 == 0x62) || (Arg2 == 0x66)))
                 {
@@ -8954,7 +8954,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     }
                 }
             }
-            ElseIf ((_T_0 == 0x0C))
+            ElseIf ((T_0 == 0x0C))
             {
                 If ((Arg2 == 0x2E))
                 {
@@ -8980,7 +8980,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     }
                 }
             }
-            ElseIf ((_T_0 == 0x0D))
+            ElseIf ((T_0 == 0x0D))
             {
                 If ((Arg2 == 0x2E))
                 {
@@ -9179,7 +9179,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             MNIO (Arg0)
             MNIO ("\n")
             Return (MDBG)
-            Arg0
         }
 
         Return (Zero)
@@ -10077,7 +10076,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == ToUUID ("b8febfe0-baf8-454b-aecd-49fb91137b21")))
                 {
                     If ((Arg2 == Zero))
@@ -10100,8 +10099,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                         {
                             While (One)
                             {
-                                _T_0 = PEPY
-                                If ((_T_0 == One))
+                                T_0 = PEPY
+                                If ((T_0 == One))
                                 {
                                     Return (Package (0x02)
                                     {
@@ -10112,7 +10111,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         }
                                     })
                                 }
-                                ElseIf ((_T_0 == 0x02))
+                                ElseIf ((T_0 == 0x02))
                                 {
                                     Return (Package (0x02)
                                     {
@@ -10123,7 +10122,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         }
                                     })
                                 }
-                                ElseIf ((_T_0 == 0x03))
+                                ElseIf ((T_0 == 0x03))
                                 {
                                     Return (DEVS)
                                 }
@@ -10718,7 +10717,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (PECI, 7, Serialized)
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 While (((PBSY & 0x02) == 0x02))
                 {
                     If ((Arg6 > 0x1000))
@@ -10741,105 +10740,105 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 {
                     While (One)
                     {
-                        _T_0 = ToInteger (HCMD)
-                        If ((_T_0 == 0xF7))
+                        T_0 = ToInteger (HCMD)
+                        If ((T_0 == 0xF7))
                         {
                             TEMP = Zero
                             Break
                         }
-                        ElseIf ((_T_0 == One))
+                        ElseIf ((T_0 == One))
                         {
                             TEMP = Zero
                             Break
                         }
-                        ElseIf ((_T_0 == 0x02))
+                        ElseIf ((T_0 == 0x02))
                         {
                             TEMP = Zero
                             Break
                         }
-                        ElseIf ((_T_0 == 0xA1))
+                        ElseIf ((T_0 == 0xA1))
                         {
                             TEMP = (Arg1 - One)
                             Break
                         }
-                        ElseIf ((_T_0 == 0xA2))
+                        ElseIf ((T_0 == 0xA2))
                         {
                             TEMP = (Arg1 - One)
                             Break
                         }
-                        ElseIf ((_T_0 == 0xB1))
+                        ElseIf ((T_0 == 0xB1))
                         {
                             TEMP = (Arg1 - One)
                             Break
                         }
-                        ElseIf ((_T_0 == 0xB2))
+                        ElseIf ((T_0 == 0xB2))
                         {
                             TEMP = (Arg1 - One)
                             Break
                         }
-                        ElseIf ((_T_0 == 0x61))
+                        ElseIf ((T_0 == 0x61))
                         {
                             TEMP = (Arg1 - One)
                             Break
                         }
-                        ElseIf ((_T_0 == 0x62))
+                        ElseIf ((T_0 == 0x62))
                         {
                             TEMP = (Arg1 - One)
                             Break
                         }
-                        ElseIf ((_T_0 == 0xE1))
+                        ElseIf ((T_0 == 0xE1))
                         {
                             TEMP = (Arg1 - One)
                             Break
                         }
-                        ElseIf ((_T_0 == 0xE2))
+                        ElseIf ((T_0 == 0xE2))
                         {
                             TEMP = (Arg1 - One)
                             Break
                         }
-                        ElseIf ((_T_0 == 0xA5))
+                        ElseIf ((T_0 == 0xA5))
                         {
                             HCTL |= 0x40
                             TEMP = (Arg1 - 0x02)
                             Break
                         }
-                        ElseIf ((_T_0 == 0xA6))
+                        ElseIf ((T_0 == 0xA6))
                         {
                             HCTL |= 0x40
                             TEMP = (Arg1 - 0x02)
                             Break
                         }
-                        ElseIf ((_T_0 == 0xB5))
+                        ElseIf ((T_0 == 0xB5))
                         {
                             HCTL |= 0x40
                             TEMP = (Arg1 - 0x02)
                             Break
                         }
-                        ElseIf ((_T_0 == 0xB6))
+                        ElseIf ((T_0 == 0xB6))
                         {
                             HCTL |= 0x40
                             TEMP = (Arg1 - 0x02)
                             Break
                         }
-                        ElseIf ((_T_0 == 0x65))
+                        ElseIf ((T_0 == 0x65))
                         {
                             HCTL |= 0x40
                             TEMP = (Arg1 - 0x02)
                             Break
                         }
-                        ElseIf ((_T_0 == 0x66))
+                        ElseIf ((T_0 == 0x66))
                         {
                             HCTL |= 0x40
                             TEMP = (Arg1 - 0x02)
                             Break
                         }
-                        ElseIf ((_T_0 == 0xE5))
+                        ElseIf ((T_0 == 0xE5))
                         {
                             HCTL |= 0x40
                             TEMP = (Arg1 - 0x02)
                             Break
                         }
-                        ElseIf ((_T_0 == 0xE6))
+                        ElseIf ((T_0 == 0xE6))
                         {
                             HCTL |= 0x40
                             TEMP = (Arg1 - 0x02)
@@ -12860,7 +12859,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (PSTC, 1, Serialized)
             {
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 If ((Arg0 == Zero))
                 {
                     Local0 = CPUP
@@ -12878,8 +12877,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 \_PR.CPU0._PPC = (CPUP - Arg0)
                 While (One)
                 {
-                    _T_0 = TCNT
-                    If ((_T_0 == 0x08))
+                    T_0 = TCNT
+                    If ((T_0 == 0x08))
                     {
                         Notify (\_PR.CPU0, 0x80)
                         Notify (\_PR.CPU1, 0x80)
@@ -12890,14 +12889,14 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                         Notify (\_PR.CPU6, 0x80)
                         Notify (\_PR.CPU7, 0x80)
                     }
-                    ElseIf ((_T_0 == 0x04))
+                    ElseIf ((T_0 == 0x04))
                     {
                         Notify (\_PR.CPU0, 0x80)
                         Notify (\_PR.CPU1, 0x80)
                         Notify (\_PR.CPU2, 0x80)
                         Notify (\_PR.CPU3, 0x80)
                     }
-                    ElseIf ((_T_0 == 0x02))
+                    ElseIf ((T_0 == 0x02))
                     {
                         Notify (\_PR.CPU0, 0x80)
                         Notify (\_PR.CPU1, 0x80)
@@ -18015,18 +18014,18 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
         Method (TACH, 1, Serialized)
         {
-            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If (ECAV ())
             {
                 While (One)
                 {
-                    _T_0 = Arg0
-                    If ((_T_0 == Zero))
+                    T_0 = Arg0
+                    If ((T_0 == Zero))
                     {
                         Local0 = TAH0
                         Break
                     }
-                    ElseIf ((_T_0 == One))
+                    ElseIf ((T_0 == One))
                     {
                         Local0 = TAH1
                         Break
@@ -18598,7 +18597,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
         Method (_Q11, 0, Serialized)  // _Qxx: EC Query
         {
-            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
             If ((MSOS () >= OSW8))
             {
                 If ((F8FG == Zero))
@@ -18635,28 +18634,28 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 {
                     While (One)
                     {
-                        _T_0 = ToInteger (Local0)
-                        If ((_T_0 == 0x20))
+                        T_0 = ToInteger (Local0)
+                        If ((T_0 == 0x20))
                         {
                             Local1 = 0xD0
                         }
-                        ElseIf ((_T_0 == 0x21))
+                        ElseIf ((T_0 == 0x21))
                         {
                             Local1 = 0xD1
                         }
-                        ElseIf ((_T_0 == 0x22))
+                        ElseIf ((T_0 == 0x22))
                         {
                             Local1 = 0xD2
                         }
-                        ElseIf ((_T_0 == 0x24))
+                        ElseIf ((T_0 == 0x24))
                         {
                             Local1 = 0xD3
                         }
-                        ElseIf ((_T_0 == 0x28))
+                        ElseIf ((T_0 == 0x28))
                         {
                             Local1 = 0xD4
                         }
-                        ElseIf ((_T_0 == 0x30))
+                        ElseIf ((T_0 == 0x30))
                         {
                             Local1 = 0xD5
                         }
@@ -19108,31 +19107,31 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
         Method (_QEC, 0, Serialized)  // _Qxx: EC Query
         {
-            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
             While (One)
             {
-                _T_0 = INSK
-                If ((_T_0 == 0x8A))
+                T_0 = INSK
+                If ((T_0 == 0x8A))
                 {
                     _Q72 ()
                 }
-                ElseIf ((_T_0 == 0x88))
+                ElseIf ((T_0 == 0x88))
                 {
                     _Q0B ()
                 }
-                ElseIf ((_T_0 == 0xCC))
+                ElseIf ((T_0 == 0xCC))
                 {
                     _Q11 ()
                 }
-                ElseIf ((_T_0 == 0x6B))
+                ElseIf ((T_0 == 0x6B))
                 {
                     _Q12 ()
                 }
-                ElseIf ((_T_0 == 0x32))
+                ElseIf ((T_0 == 0x32))
                 {
                     _Q13 ()
                 }
-                ElseIf ((_T_0 == 0x45))
+                ElseIf ((T_0 == 0x45))
                 {
                     _Q6F ()
                 }
@@ -21067,19 +21066,19 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Name (_ADR, 0x0002FFFF)  // _ADR: Address
                 Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
                 {
-                    Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
-                    Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                    Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                     If ((Arg0 == ToUUID ("bdfaef30-aebb-11de-8a39-0800200c9a66")))
                     {
                         While (One)
                         {
-                            _T_0 = ToInteger (Arg2)
-                            If ((_T_0 == Zero))
+                            T_0 = ToInteger (Arg2)
+                            If ((T_0 == Zero))
                             {
                                 While (One)
                                 {
-                                    _T_1 = ToInteger (Arg1)
-                                    If ((_T_1 == One))
+                                    T_1 = ToInteger (Arg1)
+                                    If ((T_1 == One))
                                     {
                                         If ((PFLV == FDTP))
                                         {
@@ -21105,11 +21104,11 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                     Break
                                 }
                             }
-                            ElseIf ((_T_0 == One))
+                            ElseIf ((T_0 == One))
                             {
                                 Return (One)
                             }
-                            ElseIf ((_T_0 == 0x02))
+                            ElseIf ((T_0 == 0x02))
                             {
                                 GPE3 = Zero
                                 If (((\GL00 & 0x08) == 0x08))
@@ -21127,7 +21126,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                 GPE3 = One
                                 Return (One)
                             }
-                            ElseIf ((_T_0 == 0x03))
+                            ElseIf ((T_0 == 0x03))
                             {
                                 GPE3 = Zero
                                 GPS3 = One
@@ -21524,17 +21523,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             Name (OPTS, Zero)
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 While (One)
                 {
-                    _T_0 = ToInteger (Arg0)
-                    If ((_T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+                    T_0 = ToInteger (Arg0)
+                    If ((T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
                         While (One)
                         {
-                            _T_1 = ToInteger (Arg2)
-                            If ((_T_1 == Zero))
+                            T_1 = ToInteger (Arg2)
+                            If ((T_1 == Zero))
                             {
                                 If ((Arg1 == 0x02))
                                 {
@@ -21556,7 +21555,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                     Return (Zero)
                                 }
                             }
-                            ElseIf ((_T_1 == 0x04))
+                            ElseIf ((T_1 == 0x04))
                             {
                                 If ((Arg1 == 0x02))
                                 {
@@ -21578,7 +21577,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                     }
                                 }
                             }
-                            ElseIf ((_T_1 == 0x06))
+                            ElseIf ((T_1 == 0x06))
                             {
                                 If ((Arg1 == 0x02))
                                 {
@@ -21684,17 +21683,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             Name (OPTS, Zero)
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 While (One)
                 {
-                    _T_0 = ToInteger (Arg0)
-                    If ((_T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+                    T_0 = ToInteger (Arg0)
+                    If ((T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
                         While (One)
                         {
-                            _T_1 = ToInteger (Arg2)
-                            If ((_T_1 == Zero))
+                            T_1 = ToInteger (Arg2)
+                            If ((T_1 == Zero))
                             {
                                 If ((Arg1 == 0x02))
                                 {
@@ -21716,7 +21715,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                     Return (Zero)
                                 }
                             }
-                            ElseIf ((_T_1 == 0x04))
+                            ElseIf ((T_1 == 0x04))
                             {
                                 If ((Arg1 == 0x02))
                                 {
@@ -21738,7 +21737,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                     }
                                 }
                             }
-                            ElseIf ((_T_1 == 0x06))
+                            ElseIf ((T_1 == 0x06))
                             {
                                 If ((Arg1 == 0x02))
                                 {
@@ -21835,17 +21834,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             Name (OPTS, Zero)
             Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
             {
-                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
-                Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (T_1, Zero)  // _T_x: Emitted by ASL Compiler
+                Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
                 While (One)
                 {
-                    _T_0 = ToInteger (Arg0)
-                    If ((_T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
+                    T_0 = ToInteger (Arg0)
+                    If ((T_0 == ToUUID ("e5c937d0-3553-4d7a-9117-ea4d19c3434d") /* Device Labeling Interface */))
                     {
                         While (One)
                         {
-                            _T_1 = ToInteger (Arg2)
-                            If ((_T_1 == Zero))
+                            T_1 = ToInteger (Arg2)
+                            If ((T_1 == Zero))
                             {
                                 If ((Arg1 == 0x02))
                                 {
@@ -21867,7 +21866,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                     Return (Zero)
                                 }
                             }
-                            ElseIf ((_T_1 == 0x04))
+                            ElseIf ((T_1 == 0x04))
                             {
                                 If ((Arg1 == 0x02))
                                 {
@@ -21889,7 +21888,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                     }
                                 }
                             }
-                            ElseIf ((_T_1 == 0x06))
+                            ElseIf ((T_1 == 0x06))
                             {
                                 If ((Arg1 == 0x02))
                                 {
@@ -26944,59 +26943,59 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
         Method (CTOI, 1, Serialized)
         {
-            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
             While (One)
             {
-                _T_0 = ToInteger (Arg0)
-                If ((_T_0 == One))
+                T_0 = ToInteger (Arg0)
+                If ((T_0 == One))
                 {
                     Return (One)
                 }
-                ElseIf ((_T_0 == 0x02))
+                ElseIf ((T_0 == 0x02))
                 {
                     Return (0x02)
                 }
-                ElseIf ((_T_0 == 0x04))
+                ElseIf ((T_0 == 0x04))
                 {
                     Return (0x03)
                 }
-                ElseIf ((_T_0 == 0x08))
+                ElseIf ((T_0 == 0x08))
                 {
                     Return (0x04)
                 }
-                ElseIf ((_T_0 == 0x10))
+                ElseIf ((T_0 == 0x10))
                 {
                     Return (0x05)
                 }
-                ElseIf ((_T_0 == 0x20))
+                ElseIf ((T_0 == 0x20))
                 {
                     Return (0x06)
                 }
-                ElseIf ((_T_0 == 0x40))
+                ElseIf ((T_0 == 0x40))
                 {
                     Return (0x07)
                 }
-                ElseIf ((_T_0 == 0x03))
+                ElseIf ((T_0 == 0x03))
                 {
                     Return (0x08)
                 }
-                ElseIf ((_T_0 == 0x06))
+                ElseIf ((T_0 == 0x06))
                 {
                     Return (0x09)
                 }
-                ElseIf ((_T_0 == 0x0A))
+                ElseIf ((T_0 == 0x0A))
                 {
                     Return (0x0A)
                 }
-                ElseIf ((_T_0 == 0x12))
+                ElseIf ((T_0 == 0x12))
                 {
                     Return (0x0B)
                 }
-                ElseIf ((_T_0 == 0x22))
+                ElseIf ((T_0 == 0x22))
                 {
                     Return (0x0C)
                 }
-                ElseIf ((_T_0 == 0x42))
+                ElseIf ((T_0 == 0x42))
                 {
                     Return (0x0D)
                 }
@@ -27103,7 +27102,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                         Local0 &= 0x0F
                         GPSS = Local0
                         Notify (\_SB.PCI0.GFX0, 0xD9)
-                        Notify (\_SB.PCI0.WMI1, 0xD9)
                     }
                     Else
                     {
@@ -27395,8 +27393,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         Name (PSCP, Zero)
         Method (GPS, 4, Serialized)
         {
-            Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler
-            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            Name (T_1, Zero)  // _T_x: Emitted by ASL Compiler
+            Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
             Debug = "------- GPS DSM --------"
             If ((Arg1 != 0x0100))
             {
@@ -27405,8 +27403,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             While (One)
             {
-                _T_0 = ToInteger (Arg2)
-                If ((_T_0 == Zero))
+                T_0 = ToInteger (Arg2)
+                If ((T_0 == Zero))
                 {
                     Name (FMSK, Buffer (0x08)
                     {
@@ -27447,12 +27445,12 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
                     Return (Local0)
                 }
-                ElseIf ((_T_0 == 0x13))
+                ElseIf ((T_0 == 0x13))
                 {
                     Debug = "GPS fun 19"
                     Return (Arg3)
                 }
-                ElseIf ((_T_0 == 0x20))
+                ElseIf ((T_0 == 0x20))
                 {
                     Debug = "GPS fun 20"
                     Name (RET1, Zero)
@@ -27479,11 +27477,11 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
                     Return (RET1)
                 }
-                ElseIf ((_T_0 == 0x21))
+                ElseIf ((T_0 == 0x21))
                 {
                     Return (\_PR.CPU0._PSS)
                 }
-                ElseIf ((_T_0 == 0x22))
+                ElseIf ((T_0 == 0x22))
                 {
                     CreateByteField (Arg3, Zero, PCAP)
                     \_PR.CPU0._PPC = PCAP
@@ -27491,16 +27489,16 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     PSAP = PCAP
                     Return (PCAP)
                 }
-                ElseIf ((_T_0 == 0x23))
+                ElseIf ((T_0 == 0x23))
                 {
                     Return (PSAP)
                 }
-                ElseIf ((_T_0 == 0x25))
+                ElseIf ((T_0 == 0x25))
                 {
                     Debug = "GPS fun 25"
                     Return (\_PR.CPU0._TSS)
                 }
-                ElseIf ((_T_0 == 0x26))
+                ElseIf ((T_0 == 0x26))
                 {
                     Debug = "GPS fun 26"
                     CreateDWordField (Arg3, Zero, TCAP)
@@ -27508,7 +27506,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     Notify (\_PR.CPU0, 0x80)
                     Return (TCAP)
                 }
-                ElseIf ((_T_0 == 0x2A))
+                ElseIf ((T_0 == 0x2A))
                 {
                     Debug = "GPS fun 2a"
                     CreateByteField (Arg3, Zero, PSH0)
@@ -27522,8 +27520,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     CreateBitField (Arg3, 0x0E, SEN2)
                     While (One)
                     {
-                        _T_1 = PSH0
-                        If ((_T_1 == Zero))
+                        T_1 = PSH0
+                        If ((T_1 == Zero))
                         {
                             If (CPUT)
                             {
@@ -27534,14 +27532,14 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
                             Return (GPSP)
                         }
-                        ElseIf ((_T_1 == One))
+                        ElseIf ((T_1 == One))
                         {
                             RETN = 0x0300
                             RETN |= PSH0
                             PDTS = 0x03E8
                             Return (GPSP)
                         }
-                        ElseIf ((_T_1 == 0x02))
+                        ElseIf ((T_1 == 0x02))
                         {
                             RETN = 0x0102
                             VRV1 = Zero
@@ -27675,7 +27673,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
         Method (NGC6, 4, Serialized)
         {
-            Name (_T_0, Zero)  // _T_x: Emitted by ASL Compiler
+            Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
             Debug = "------- GC6 DSM --------"
             If ((Arg1 < 0x0100))
             {
@@ -27684,15 +27682,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             While (One)
             {
-                _T_0 = ToInteger (Arg2)
-                If ((_T_0 == Zero))
+                T_0 = ToInteger (Arg2)
+                If ((T_0 == Zero))
                 {
                     Return (Buffer (0x04)
                     {
                          0x1B, 0x00, 0x00, 0x00                         
                     })
                 }
-                ElseIf ((_T_0 == One))
+                ElseIf ((T_0 == One))
                 {
                     Name (JTB1, Buffer (0x04)
                     {
@@ -27713,12 +27711,12 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     JTRV = 0x0103
                     Return (JTB1)
                 }
-                ElseIf ((_T_0 == 0x02))
+                ElseIf ((T_0 == 0x02))
                 {
                     Debug = "GPS fun 19"
                     Return (Arg3)
                 }
-                ElseIf ((_T_0 == 0x03))
+                ElseIf ((T_0 == 0x03))
                 {
                     CreateField (Arg3, Zero, 0x03, GUPC)
                     CreateField (Arg3, 0x04, One, PLPC)
@@ -27777,7 +27775,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     ElseIf ((ToInteger (GUPC) == 0x06)) {}
                     Return (JTB3)
                 }
-                ElseIf ((_T_0 == 0x04))
+                ElseIf ((T_0 == 0x04))
                 {
                     Return (0x80000002)
                 }
@@ -27794,55 +27792,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         Method (_STA, 0, Serialized)  // _STA: Status
         {
             Return (0x0F)
-        }
-    }
-
-    Scope (\_SB.PCI0)
-    {
-        Device (WMI1)
-        {
-            Name (_HID, "PNP0C14")  // _HID: Hardware ID
-            Name (_UID, "OPT1")  // _UID: Unique ID
-            Name (_WDG, Buffer (0x14)
-            {
-                /* 0000 */  0x3C, 0x5C, 0xCB, 0xF6, 0xAE, 0x9C, 0xBD, 0x4E,
-                /* 0008 */  0xB5, 0x77, 0x93, 0x1E, 0xA3, 0x2A, 0x2C, 0xC0,
-                /* 0010 */  0x4D, 0x58, 0x01, 0x02                         
-            })
-            Method (WMMX, 3, NotSerialized)
-            {
-                CreateDWordField (Arg2, Zero, FUNC)
-                If ((FUNC == 0x534F525F))
-                {
-                    If ((SizeOf (Arg2) >= 0x08))
-                    {
-                        CreateDWordField (Arg2, 0x04, ARGS)
-                        CreateDWordField (Arg2, 0x08, XARG)
-                        Return (\_SB.PCI0.PEG0.PEGP._ROM (ARGS, XARG))
-                    }
-                }
-
-                If ((FUNC == 0x4D53445F))
-                {
-                    If ((SizeOf (Arg2) >= 0x1C))
-                    {
-                        CreateField (Arg2, Zero, 0x80, MUID)
-                        CreateDWordField (Arg2, 0x10, REVI)
-                        CreateDWordField (Arg2, 0x14, SFNC)
-                        CreateField (Arg2, 0xE0, 0x20, XRG0)
-                        If (CondRefOf (\_SB.PCI0.GFX0._DSM))
-                        {
-                            Return (\_SB.PCI0.GFX0._DSM)
-                            MUID
-                            REVI
-                            SFNC
-                            XRG0
-                        }
-                    }
-                }
-
-                Return (Zero)
-            }
         }
     }
 }
