@@ -52,39 +52,16 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
     External (_SB_.IFFS.FFSS, UnknownObj)    // Warning: Unknown object
     External (_SB_.PCCD, UnknownObj)    // Warning: Unknown object
     External (_SB_.PCCD.PENB, UnknownObj)    // Warning: Unknown object
-    External (_SB_.PCI0.GFX0.ADVD, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.AINT, MethodObj)    // 2 Arguments
-    External (_SB_.PCI0.GFX0.DWBL, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.GCBL, MethodObj)    // 1 Arguments
-    External (_SB_.PCI0.GFX0.GCDS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.GLID, MethodObj)    // 1 Arguments
-    External (_SB_.PCI0.GFX0.GSCI, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.IUEH, MethodObj)    // 1 Arguments
-    External (_SB_.PCI0.GFX0.LCDD._DCS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.NATK, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.OPTS, MethodObj)    // 1 Arguments
-    External (_SB_.PCI0.GFX0.OWAK, MethodObj)    // 1 Arguments
-    External (_SB_.PCI0.GFX0.PRST, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.SWHD, MethodObj)    // 1 Arguments
-    External (_SB_.PCI0.GFX0.UPBL, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.PAUD.PUAM, MethodObj)    // Warning: Unknown method, guessing 0 arguments
-    External (_SB_.PCI0.PEG0.HPME, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG0.PEGP, UnknownObj)
-    External (_SB_.PCI0.PEG0.PEGP.DWBL, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG0.PEGP.LCDD._DCS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG0.PEGP.NATK, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG0.PEGP.PRST, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG0.PEGP.UPBL, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG1, UnknownObj)
-    External (_SB_.PCI0.PEG1.HPME, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG2, UnknownObj)
-    External (_SB_.PCI0.PEG2.HPME, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.SAT0.P0P_, UnknownObj)    // Warning: Unknown object
     External (_SB_.PCI0.SAT0.P1P_, UnknownObj)    // Warning: Unknown object
     External (_SB_.PCI0.SAT0.P2P_, UnknownObj)    // Warning: Unknown object
     External (_SB_.PCI0.SAT0.P3P_, UnknownObj)    // Warning: Unknown object
     External (_SB_.PCI0.XHC_.DUAM, MethodObj)    // Warning: Unknown method, guessing 0 arguments
     External (_SB_.TPM_.PTS_, MethodObj)    // Warning: Unknown method, guessing 1 arguments
+    External (HDOS, MethodObj)    // Warning: Unknown method, guessing 0 arguments
+    External (HNOT, MethodObj)    // Warning: Unknown method, guessing 1 arguments
+    External (IDAB, MethodObj)    // Warning: Unknown method, guessing 0 arguments
     External (MDBG, IntObj)    // Warning: Unknown object
     External (PCCD, UnknownObj)    // Warning: Unknown object
     External (PDC0, IntObj)
@@ -94,7 +71,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
     External (PDC4, IntObj)
     External (PDC5, IntObj)
     External (PDC6, IntObj)
-    External (PDC7, IntObj)
+    External (PDC7, IntObj)    
+    
 
     Name (SMBS, 0x0580)
     Name (SMBL, 0x20)
@@ -20954,14 +20932,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         }
     }
 
-    Scope (_GPE)
-    {
-    }
-
-    Scope (_SB.PCI0.LPCB.EC0)
-    {
-    }
-
     Scope (_SB.PCI0.XHC.RHUB.HS07)
     {
         Name (CAPD, Package (0x01)
@@ -21036,18 +21006,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         \_SB.PCI0.GFX0.OWAK (Arg0)
         OEMW (Arg0)
     }
-
-
-
-    External (_SB_.PCI0.SAT0, DeviceObj)
-    External (FDTP, IntObj)
-    External (GIV0, FieldUnitObj)
-    External (GL00, FieldUnitObj)
-    External (GL08, FieldUnitObj)
-    External (GPE3, FieldUnitObj)
-    External (GPS3, FieldUnitObj)
-    External (PFLV, FieldUnitObj)
-    External (RTD3, FieldUnitObj)
 
     If ((RTD3 == Zero))
     {
@@ -21157,8 +21115,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             }
         }
     }
-
-    External (_SB_.PCI0.SAT0, DeviceObj)
 
     Scope (\)
     {
@@ -21288,46 +21244,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             }
         }
     }
-
-    External (_SB_.BRTI, FieldUnitObj)
-    External (_SB_.CSTE, FieldUnitObj)
-    External (_SB_.LBTN, FieldUnitObj)
-    External (_SB_.NSTE, FieldUnitObj)
-    External (_SB_.OCAD, FieldUnitObj)
-    External (_SB_.OPAD, FieldUnitObj)
-    External (_SB_.PCI0, DeviceObj)
-    External (_SB_.PCI0.AR02, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.AR0A, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.AR0B, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.SNXD, MethodObj)    // 1 Arguments
-    External (_SB_.PCI0.LPCB.EC0_.PWAC, BuffObj)
-    External (_SB_.PCI0.LPCB.EC0_.STBR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PR02, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PR0A, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PR0B, MethodObj)    // 0 Arguments
-    External (_SB_.PEPD, UnknownObj)
-    External (_SB_.SFUN, FieldUnitObj)
-    External (_SB_.SSTE, FieldUnitObj)
-    External (_SB_.VBIF, FieldUnitObj)
-    External (_SB_.VGAF, FieldUnitObj)
-    External (ADBG, MethodObj)    // 1 Arguments
-    External (DSEN, FieldUnitObj)
-    External (GPRW, MethodObj)    // 2 Arguments
-    External (GUAM, MethodObj)    // 1 Arguments
-    External (HDOS, MethodObj)    // Warning: Unknown method, guessing 0 arguments
-    External (HNOT, MethodObj)    // Warning: Unknown method, guessing 1 arguments
-    External (IDAB, MethodObj)    // Warning: Unknown method, guessing 0 arguments
-    External (ISMI, MethodObj)    // 1 Arguments
-    External (MSOS, MethodObj)    // 0 Arguments
-    External (NATK, MethodObj)    // 0 Arguments
-    External (OSFG, IntObj)
-    External (OSW8, IntObj)
-    External (OSXP, IntObj)
-    External (OSYS, FieldUnitObj)
-    External (PICM, IntObj)
-    External (PNHM, FieldUnitObj)
-    External (S0ID, FieldUnitObj)
-    External (SCIS, FieldUnitObj)
 
     OperationRegion (SANV, SystemMemory, 0xCAA5DE18, 0x0169)
     Field (SANV, AnyAcc, Lock, Preserve)
@@ -25345,63 +25261,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         }
     }
 
-
-    External (_SB_.PCI0.GFX0._DOD, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD01._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD01._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD02._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD02._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD03._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD03._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD04._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD04._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD05._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD05._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD06._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD06._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD07._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD07._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD08._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD08._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD09._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD09._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0A._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0A._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0B._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0B._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0C._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0C._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0D._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0D._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0E._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0E._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0F._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.DD0F._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.LCDD._ADR, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.LCDD._BCL, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.LCDD._BCM, MethodObj)    // 1 Arguments
-    External (_SB_.PCI0.GFX0.LCDD._BQC, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.LCDD._DCS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.GFX0.LCDD._DGS, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.LPCB.EC0_.RRAM, MethodObj)    // 1 Arguments
-    External (_SB_.PCI0.LPCB.EC0_.WRAM, MethodObj)    // 2 Arguments
-    External (_SB_.PCI0.PEG0, DeviceObj)
-    External (_SB_.PCI0.PEG0.PEGP, DeviceObj)
-    External (_SB_.PCI0.PEG0.PEGP._ADR, IntObj)
-    External (EECP, FieldUnitObj)
-    External (GBAS, FieldUnitObj)
-    External (GPRW, MethodObj)    // 2 Arguments
-    External (HLRS, FieldUnitObj)
-    External (P0UB, FieldUnitObj)
-    External (PCSL, FieldUnitObj)
-    External (PNHM, FieldUnitObj)
-    External (PWEN, FieldUnitObj)
-    External (PWOK, FieldUnitObj)
-    External (SC7A, FieldUnitObj)
-    External (SGGP, FieldUnitObj)
-    External (SGMD, FieldUnitObj)
-    External (XBAS, FieldUnitObj)
-
     Scope (\_SB.PCI0.PEG0)
     {
         OperationRegion (RPCI, PCI_Config, Zero, 0xF0)
@@ -26429,7 +26288,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_BCM, 1, NotSerialized)  // _BCM: Brightness Control Method
             {
-                Return (\_SB.PCI0.GFX0.LCDD._BCM (Arg0))
+                \_SB.PCI0.GFX0.LCDD._BCM (Arg0)
             }
         }
 
@@ -26516,57 +26375,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             Return (One)
         }
     }
-
-
-    External (_PR_.CPU0, ProcessorObj)
-    External (_PR_.CPU0._PPC, IntObj)
-    External (_PR_.CPU0._PSS, PkgObj)
-    External (_PR_.CPU0._PTC, UnknownObj)    // Warning: Unknown object
-    External (_PR_.CPU0._TSS, IntObj)    // Warning: Unknown object
-    External (_SB_.PCI0, DeviceObj)
-    External (_SB_.PCI0.GFX0, DeviceObj)
-    External (_SB_.PCI0.GFX0._DSM, IntObj)    // Warning: Unknown object
-    External (_SB_.PCI0.GFX0.LCDD, UnknownObj)
-    External (_SB_.PCI0.LPCB.EC0_.ECNV, MethodObj)    // 1 Arguments
-    External (_SB_.PCI0.LPCB.EC0_.FBST, IntObj)
-    External (_SB_.PCI0.LPCB.EC0_.SPIN, MethodObj)    // 2 Arguments
-    External (_SB_.PCI0.LPCB.H_EC.GTVR, IntObj)    // Warning: Unknown object
-    External (_SB_.PCI0.PEG0, DeviceObj)
-    External (_SB_.PCI0.PEG0.LNKD, FieldUnitObj)
-    External (_SB_.PCI0.PEG0.LNKS, FieldUnitObj)
-    External (_SB_.PCI0.PEG0.PEGP, DeviceObj)
-    External (_SB_.PCI0.PEG0.PEGP.CLP0, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG0.PEGP.SGOF, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG0.PEGP.SGON, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG0.PEGP.SGPI, MethodObj)    // 1 Arguments
-    External (_SB_.PCI0.PEG0.PEGP.SGPO, MethodObj)    // 2 Arguments
-    External (_SB_.PCI0.PEG0.PEGP.SGST, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.PEG0.RTLK, FieldUnitObj)
-    External (_SB_.PCI0.PEG0.TREN, FieldUnitObj)
-    External (DID1, FieldUnitObj)
-    External (DID2, FieldUnitObj)
-    External (DID3, FieldUnitObj)
-    External (DID4, FieldUnitObj)
-    External (DID5, FieldUnitObj)
-    External (DID6, FieldUnitObj)
-    External (DID7, FieldUnitObj)
-    External (DID8, FieldUnitObj)
-    External (EBAS, FieldUnitObj)
-    External (HLRS, FieldUnitObj)
-    External (NVGA, FieldUnitObj)
-    External (NVHA, FieldUnitObj)
-    External (NXD1, FieldUnitObj)
-    External (NXD2, FieldUnitObj)
-    External (NXD3, FieldUnitObj)
-    External (NXD4, FieldUnitObj)
-    External (NXD5, FieldUnitObj)
-    External (NXD6, FieldUnitObj)
-    External (NXD7, FieldUnitObj)
-    External (NXD8, FieldUnitObj)
-    External (PWEN, FieldUnitObj)
-    External (PWOK, FieldUnitObj)
-    External (SGFL, FieldUnitObj)
-    External (SSMP, FieldUnitObj)
 
     Scope (\_SB.PCI0)
     {
