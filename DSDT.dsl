@@ -22516,17 +22516,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Return (\_SB.PCI0.IGPU.DD01._ADR ())
             }
 
-            Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
-            {
-            }
-
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
                 Return (\_SB.PCI0.IGPU.DD01._DGS ())
-            }
-
-            Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
-            {
             }
         }
 
@@ -22537,17 +22529,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Return (\_SB.PCI0.IGPU.DD02._ADR ())
             }
 
-            Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
-            {
-            }
-
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
                 Return (\_SB.PCI0.IGPU.DD02._DGS ())
-            }
-
-            Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
-            {
             }
         }
 
@@ -22558,17 +22542,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Return (\_SB.PCI0.IGPU.DD03._ADR ())
             }
 
-            Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
-            {
-            }
-
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
                 Return (\_SB.PCI0.IGPU.DD03._DGS ())
-            }
-
-            Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
-            {
             }
         }
 
@@ -22579,17 +22555,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Return (\_SB.PCI0.IGPU.DD04._ADR ())
             }
 
-            Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
-            {
-            }
-
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
                 Return (\_SB.PCI0.IGPU.DD04._DGS ())
-            }
-
-            Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
-            {
             }
         }
 
@@ -22600,17 +22568,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Return (\_SB.PCI0.IGPU.DD05._ADR ())
             }
 
-            Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
-            {
-            }
-
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
                 Return (\_SB.PCI0.IGPU.DD05._DGS ())
-            }
-
-            Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
-            {
             }
         }
 
@@ -22621,17 +22581,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Return (\_SB.PCI0.IGPU.DD06._ADR ())
             }
 
-            Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
-            {
-            }
-
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
                 Return (\_SB.PCI0.IGPU.DD06._DGS ())
-            }
-
-            Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
-            {
             }
         }
 
@@ -22642,17 +22594,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Return (\_SB.PCI0.IGPU.DD07._ADR ())
             }
 
-            Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
-            {
-            }
-
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
                 Return (\_SB.PCI0.IGPU.DD07._DGS ())
-            }
-
-            Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
-            {
             }
         }
 
@@ -22663,17 +22607,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Return (\_SB.PCI0.IGPU.DD08._ADR ())
             }
 
-            Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
-            {
-            }
-
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
                 Return (\_SB.PCI0.IGPU.DD08._DGS ())
-            }
-
-            Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
-            {
             }
         }
 
@@ -22684,17 +22620,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Return (\_SB.PCI0.IGPU.DD09._ADR ())
             }
 
-            Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
-            {
-            }
-
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
                 Return (\_SB.PCI0.IGPU.DD09._DGS ())
-            }
-
-            Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
-            {
             }
         }
 
@@ -22705,17 +22633,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Return (\_SB.PCI0.IGPU.DD0A._ADR ())
             }
 
-            Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
-            {
-            }
-
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
                 Return (\_SB.PCI0.IGPU.DD0A._DGS ())
-            }
-
-            Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
-            {
             }
         }
 
@@ -22726,17 +22646,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Return (\_SB.PCI0.IGPU.DD0B._ADR ())
             }
 
-            Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
-            {
-            }
-
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
                 Return (\_SB.PCI0.IGPU.DD0B._DGS ())
-            }
-
-            Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
-            {
             }
         }
 
@@ -22747,17 +22659,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Return (\_SB.PCI0.IGPU.DD0C._ADR ())
             }
 
-            Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
-            {
-            }
-
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
                 Return (\_SB.PCI0.IGPU.DD0C._DGS ())
-            }
-
-            Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
-            {
             }
         }
 
@@ -22768,17 +22672,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Return (\_SB.PCI0.IGPU.DD0D._ADR ())
             }
 
-            Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
-            {
-            }
-
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
                 Return (\_SB.PCI0.IGPU.DD0D._DGS ())
-            }
-
-            Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
-            {
             }
         }
 
@@ -22789,17 +22685,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Return (\_SB.PCI0.IGPU.DD0E._ADR ())
             }
 
-            Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
-            {
-            }
-
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
                 Return (\_SB.PCI0.IGPU.DD0E._DGS ())
-            }
-
-            Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
-            {
             }
         }
 
@@ -22810,17 +22698,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Return (\_SB.PCI0.IGPU.DD0F._ADR ())
             }
 
-            Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
-            {
-            }
-
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
                 Return (\_SB.PCI0.IGPU.DD0F._DGS ())
-            }
-
-            Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
-            {
             }
         }
 
@@ -22839,10 +22719,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
                 Return (\_SB.PCI0.IGPU.LCDD._DGS ())
-            }
-
-            Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
-            {
             }
 
             Method (_BCL, 0, NotSerialized)  // _BCL: Brightness Control Levels
