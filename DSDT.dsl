@@ -10741,12 +10741,12 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 LFCC = Local2
                 PBIF [0x03] = Arg3
                 PBIF [0x04] = Arg4
-                Divide (Local1, 0x0A, Local3, Local5)
+                Local5 = Local1 / 0x0A
                 PBIF [0x05] = Local5
-                Divide (Local1, 0x64, Local3, Local6)
+                Local6 = Local1 / 0x64
                 PBIF [0x06] = Local6
                 LOW2 = Local6
-                Divide (Local1, 0x64, Local3, Local7)
+                Local7 = Local1 / 0x64
                 PBIF [0x07] = Local7
                 PBIF [0x08] = Local7
             }
@@ -14943,7 +14943,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         Method (CELC, 1, NotSerialized)
         {
             Local0 = (Arg0 - 0x0AAC)
-            Divide (Local0, 0x0A, Local1, Local0)
+            Local0 /= 0x0A
             Return (Local0)
         }
 
@@ -15073,7 +15073,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 }
 
                 Local0 = \_SB.PCI0.LPCB.EC0.TACH (Arg0)
-                Divide (Local0, 0x64, Local1, Local0)
+                Local0 /= 0x64
                 Local0 += One
                 If ((Local0 <= 0x3C))
                 {
@@ -15347,7 +15347,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Local0 *= 0x02
                 If ((Local0 != Zero))
                 {
-                    Divide (0x0041CDB4, Local0, Local1, Local0)
+                    Local0 = 0x0041CDB4 / Local0
                     Return (Local0)
                 }
                 Else
@@ -15724,158 +15724,20 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             }
         }
 
-        Method (_Q0E, 0, NotSerialized)  // _Qxx: EC Query
+        Method (_Q0E, 0, NotSerialized)  
         {
-            If ((MSOS () < OSW8))
+            If (ATKP)
             {
-                SBRN ()
+                \_SB.ATKD.IANE (0x20)
             }
-
-            If ((MSOS () >= OSVT))
-            {
-                Local0 = LBTN
-                If (^^^IGPU.PRST ())
-                {
-                    If ((^^^IGPU.LCDD._DCS () != 0x1F))
-                    {
-                        Return (One)
-                    }
-
-                    ^^^IGPU.DWBL ()
-                    ASBN = One
-                }
-
-                If (^^^PEG0.PEGP.PRST ())
-                {
-                    If (!ASBN)
-                    {
-                        If ((^^^PEG0.PEGP.LCDD._DCS () != 0x1F))
-                        {
-                            Return (One)
-                        }
-
-                        ^^^PEG0.PEGP.DWBL ()
-                        ASBN = One
-                    }
-                }
-
-                ASBN = Zero
-                If (ATKP)
-                {
-                    If ((MSOS () >= OSW8)) {}
-                    Else
-                    {
-                        If ((Local0 > Zero))
-                        {
-                            Local0--
-                        }
-
-                        If ((Local0 > 0x0A))
-                        {
-                            Local0 = 0x0A
-                        }
-
-                        LBTN = Local0
-                        ^^^^ATKD.IANE ((Local0 + 0x20))
-                    }
-                }
-            }
-            Else
-            {
-                If ((LBTN > Zero))
-                {
-                    LBTN--
-                }
-
-                If ((LBTN > 0x0A))
-                {
-                    LBTN = 0x0A
-                }
-
-                STBR ()
-                If (ATKP)
-                {
-                    ^^^^ATKD.IANE ((LBTN + 0x20))
-                }
-            }
-
-            Return (One)
         }
-
-        Method (_Q0F, 0, NotSerialized)  // _Qxx: EC Query
+        
+        Method (_Q0F, 0, NotSerialized) 
         {
-            If ((MSOS () < OSW8))
+            If (ATKP)
             {
-                SBRN ()
+                \_SB.ATKD.IANE (0x10)
             }
-
-            If ((MSOS () >= OSVT))
-            {
-                Local0 = LBTN
-                If (^^^IGPU.PRST ())
-                {
-                    If ((^^^IGPU.LCDD._DCS () != 0x1F))
-                    {
-                        Return (One)
-                    }
-
-                    ^^^IGPU.UPBL ()
-                    ASBN = One
-                }
-
-                If (^^^PEG0.PEGP.PRST ())
-                {
-                    If (!ASBN)
-                    {
-                        If ((^^^PEG0.PEGP.LCDD._DCS () != 0x1F))
-                        {
-                            Return (One)
-                        }
-
-                        ^^^PEG0.PEGP.UPBL ()
-                        ASBN = One
-                    }
-                }
-
-                ASBN = Zero
-                If (ATKP)
-                {
-                    If ((MSOS () >= OSW8)) {}
-                    Else
-                    {
-                        If ((Local0 < 0x0A))
-                        {
-                            Local0++
-                        }
-                        Else
-                        {
-                            Local0 = 0x0A
-                        }
-
-                        LBTN = Local0
-                        ^^^^ATKD.IANE ((Local0 + 0x10))
-                    }
-                }
-            }
-            Else
-            {
-                If ((LBTN < 0x0A))
-                {
-                    LBTN++
-                }
-                Else
-                {
-                    LBTN = 0x0A
-                }
-
-                STBR ()
-                If (ATKP)
-                {
-                    ^^^^ATKD.IANE ((LBTN + 0x10))
-                }
-            }
-
-            Return (One)
         }
 
         Method (_Q10, 0, NotSerialized)  // _Qxx: EC Query
