@@ -15914,7 +15914,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         Method (FSMI, 1, NotSerialized)
         {
             FSFN = Arg0
-            Local0 = (Arg0 | 0xA0)
             ISMI (0x90)
             Return (FSTA)
         }
