@@ -5343,24 +5343,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 {
                     Name (_ADR, One)  // _ADR: Address
                     Name (_STA, 0x0F)  // _STA: Status
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
+                    Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
                     {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            0x03, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR2 & One))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [Zero])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
+                        0xFF, 
+                        0x03, 
+                        Zero, 
+                        Zero
+                    })
 
                     Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
                     {
@@ -5391,24 +5380,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 {
                     Name (_ADR, 0x02)  // _ADR: Address
                     Name (_STA, 0x0F)  // _STA: Status
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
+                    Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
                     {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            0x03, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR2 & 0x02))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [One])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
+                        0xFF, 
+                        0x03, 
+                        Zero, 
+                        Zero
+                    })
 
                     Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
                     {
@@ -5439,24 +5417,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 {
                     Name (_ADR, 0x03)  // _ADR: Address
                     Name (_STA, 0x0F)  // _STA: Status
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
+                    Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
                     {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            0x03, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR2 & 0x04))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [0x02])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
+                        0xFF, 
+                        0x03, 
+                        Zero, 
+                        Zero
+                    })
 
                     Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
                     {
@@ -5483,76 +5450,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     }
                 }
 
-                Device (HS04)
-                {
-                    Name (_ADR, 0x04)  // _ADR: Address
-                    Name (_STA, 0x0F)  // _STA: Status
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
-                    {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            0x03, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR2 & 0x08))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [0x03])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
-
-                    Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
-                    {
-                        Name (PLDP, Package (0x01)
-                        {
-                            Buffer (0x10)
-                            {
-                                /* 0000 */  0x01, 0xC6, 0x72, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                /* 0008 */  0x71, 0x0C, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00 
-                            }
-                        })
-                        Local0 = DerefOf (VISB [0x03])
-                        Local1 = DerefOf (DerefOf (PLDP [Zero]) [0x08])
-                        Local1 &= 0xFE
-                        Local1 |= Local0
-                        DerefOf (PLDP [Zero]) [0x08] = Local1
-                        CreateBitField (DerefOf (PLDP [Zero]), 0x40, VIS)
-                        If (!(PR2 & 0x08))
-                        {
-                            VIS &= Zero
-                        }
-
-                        Return (PLDP)
-                    }
-                }
-
                 Device (HS05)
                 {
                     Name (_ADR, 0x05)  // _ADR: Address
                     Name (_STA, 0x0F)  // _STA: Status
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
+                    Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
                     {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            Zero, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR2 & 0x10))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [0x04])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
+                        0xFF, 
+                        0xFF, 
+                        Zero, 
+                        Zero
+                    })
 
                     Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
                     {
@@ -5579,76 +5487,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     }
                 }
 
-                Device (HS06)
-                {
-                    Name (_ADR, 0x06)  // _ADR: Address
-                    Name (_STA, 0x0F)  // _STA: Status
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
-                    {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            Zero, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR2 & 0x20))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [0x05])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
-
-                    Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
-                    {
-                        Name (PLDP, Package (0x01)
-                        {
-                            Buffer (0x10)
-                            {
-                                /* 0000 */  0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                /* 0008 */  0x69, 0x0C, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00 
-                            }
-                        })
-                        Local0 = DerefOf (VISB [0x05])
-                        Local1 = DerefOf (DerefOf (PLDP [Zero]) [0x08])
-                        Local1 &= 0xFE
-                        Local1 |= Local0
-                        DerefOf (PLDP [Zero]) [0x08] = Local1
-                        CreateBitField (DerefOf (PLDP [Zero]), 0x40, VIS)
-                        If (!(PR2 & 0x20))
-                        {
-                            VIS &= Zero
-                        }
-
-                        Return (PLDP)
-                    }
-                }
-
                 Device (HS07)
                 {
                     Name (_ADR, 0x07)  // _ADR: Address
                     Name (_STA, 0x0F)  // _STA: Status
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
+                    Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
                     {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            Zero, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR2 & 0x40))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [0x06])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
+                        0xFF, 
+                        0xFF, 
+                        Zero, 
+                        Zero
+                    })
 
                     Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
                     {
@@ -5679,24 +5528,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 {
                     Name (_ADR, 0x08)  // _ADR: Address
                     Name (_STA, 0x0F)  // _STA: Status
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
+                    Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
                     {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            Zero, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR2 & 0x80))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [0x07])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
+                        0xFF, 
+                        0xFF, 
+                        Zero, 
+                        Zero
+                    })
 
                     Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
                     {
@@ -5715,59 +5553,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                         DerefOf (PLDP [Zero]) [0x08] = Local1
                         CreateBitField (DerefOf (PLDP [Zero]), 0x40, VIS)
                         If (!(PR2 & 0x80))
-                        {
-                            VIS &= Zero
-                        }
-
-                        Return (PLDP)
-                    }
-                }
-
-                Device (HS09)
-                {
-                    Name (_ADR, 0x09)  // _ADR: Address
-                    Name (_STA, 0x0F)  // _STA: Status
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
-                    {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            0x03, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR2 & 0x0100))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [0x08])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
-
-                    Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
-                    {
-                        Name (PLDP, Package (0x01)
-                        {
-                            Buffer (0x10)
-                            {
-                                /* 0000 */  0x01, 0xC6, 0x72, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                /* 0008 */  0x71, 0x0C, 0x80, 0x04, 0x00, 0x00, 0x00, 0x00 
-                            }
-                        })
-                        Local0 = DerefOf (VISB [0x08])
-                        Local1 = DerefOf (DerefOf (PLDP [Zero]) [0x08])
-                        Local1 &= 0xFE
-                        Local1 |= Local0
-                        DerefOf (PLDP [Zero]) [0x08] = Local1
-                        CreateBitField (DerefOf (PLDP [Zero]), 0x40, VIS)
-                        If (!(PR2 & 0x0100))
-                        {
-                            VIS &= Zero
-                        }
-
-                        If (((CDID & 0xF000) == 0x9000))
                         {
                             VIS &= Zero
                         }
@@ -5802,24 +5587,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                         }
                     }
 
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
+                    Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
                     {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            0x03, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR2 & 0x0200))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [0x09])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
+                        0xFF, 
+                        0xFF, 
+                        Zero, 
+                        Zero
+                    })
 
                     Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
                     {
@@ -5846,334 +5620,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     }
                 }
 
-                Device (HS11)
-                {
-                    Method (_ADR, 0, Serialized)  // _ADR: Address
-                    {
-                        If (((CDID & 0xF000) == 0x8000))
-                        {
-                            Return (0x0B)
-                        }
-                        Else
-                        {
-                            Return (0xFB)
-                        }
-                    }
-
-                    Method (_STA, 0, Serialized)  // _STA: Status
-                    {
-                        If (((CDID & 0xF000) == 0x8000))
-                        {
-                            Return (0x0F)
-                        }
-                        Else
-                        {
-                            Return (Zero)
-                        }
-                    }
-
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
-                    {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            0xFF, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR2 & 0x0400))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [0x0A])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
-
-                    Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
-                    {
-                        Name (PLDP, Package (0x01)
-                        {
-                            Buffer (0x10)
-                            {
-                                /* 0000 */  0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                /* 0008 */  0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
-                            }
-                        })
-                        Local0 = DerefOf (VISB [0x0A])
-                        Local1 = DerefOf (DerefOf (PLDP [Zero]) [0x08])
-                        Local1 &= 0xFE
-                        Local1 |= Local0
-                        DerefOf (PLDP [Zero]) [0x08] = Local1
-                        CreateBitField (DerefOf (PLDP [Zero]), 0x40, VIS)
-                        If (!(PR2 & 0x0400))
-                        {
-                            VIS &= Zero
-                        }
-
-                        Return (PLDP)
-                    }
-                }
-
-                Device (HS12)
-                {
-                    Method (_ADR, 0, Serialized)  // _ADR: Address
-                    {
-                        If (((CDID & 0xF000) == 0x8000))
-                        {
-                            Return (0x0C)
-                        }
-                        Else
-                        {
-                            Return (0xFC)
-                        }
-                    }
-
-                    Method (_STA, 0, Serialized)  // _STA: Status
-                    {
-                        If (((CDID & 0xF000) == 0x8000))
-                        {
-                            Return (0x0F)
-                        }
-                        Else
-                        {
-                            Return (Zero)
-                        }
-                    }
-
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
-                    {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            0xFF, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR2 & 0x0800))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [0x0B])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
-
-                    Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
-                    {
-                        Name (PLDP, Package (0x01)
-                        {
-                            Buffer (0x10)
-                            {
-                                /* 0000 */  0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                /* 0008 */  0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
-                            }
-                        })
-                        Local0 = DerefOf (VISB [0x0B])
-                        Local1 = DerefOf (DerefOf (PLDP [Zero]) [0x08])
-                        Local1 &= 0xFE
-                        Local1 |= Local0
-                        DerefOf (PLDP [Zero]) [0x08] = Local1
-                        CreateBitField (DerefOf (PLDP [Zero]), 0x40, VIS)
-                        If (!(PR2 & 0x0800))
-                        {
-                            VIS &= Zero
-                        }
-
-                        Return (PLDP)
-                    }
-                }
-
-                Device (HS13)
-                {
-                    Method (_ADR, 0, Serialized)  // _ADR: Address
-                    {
-                        If (((CDID & 0xF000) == 0x8000))
-                        {
-                            Return (0x0D)
-                        }
-                        Else
-                        {
-                            Return (0xFD)
-                        }
-                    }
-
-                    Method (_STA, 0, Serialized)  // _STA: Status
-                    {
-                        If (((CDID & 0xF000) == 0x8000))
-                        {
-                            Return (0x0F)
-                        }
-                        Else
-                        {
-                            Return (Zero)
-                        }
-                    }
-
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
-                    {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            0xFF, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR2 & 0x1000))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [0x0C])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
-
-                    Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
-                    {
-                        Name (PLDP, Package (0x01)
-                        {
-                            Buffer (0x10)
-                            {
-                                /* 0000 */  0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                /* 0008 */  0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
-                            }
-                        })
-                        Local0 = DerefOf (VISB [0x0C])
-                        Local1 = DerefOf (DerefOf (PLDP [Zero]) [0x08])
-                        Local1 &= 0xFE
-                        Local1 |= Local0
-                        DerefOf (PLDP [Zero]) [0x08] = Local1
-                        CreateBitField (DerefOf (PLDP [Zero]), 0x40, VIS)
-                        If (!(PR2 & 0x1000))
-                        {
-                            VIS &= Zero
-                        }
-
-                        Return (PLDP)
-                    }
-                }
-
-                Device (HS14)
-                {
-                    Name (_ADR, 0x0E)  // _ADR: Address
-                    Method (_STA, 0, Serialized)  // _STA: Status
-                    {
-                        If (((CDID & 0xF000) == 0x8000))
-                        {
-                            Return (0x0F)
-                        }
-                        Else
-                        {
-                            Return (Zero)
-                        }
-                    }
-
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
-                    {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            0xFF, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR2 & 0x2000))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [0x0D])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
-
-                    Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
-                    {
-                        Name (PLDP, Package (0x01)
-                        {
-                            Buffer (0x10)
-                            {
-                                /* 0000 */  0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                /* 0008 */  0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
-                            }
-                        })
-                        Local0 = DerefOf (VISB [0x0D])
-                        Local1 = DerefOf (DerefOf (PLDP [Zero]) [0x08])
-                        Local1 &= 0xFE
-                        Local1 |= Local0
-                        DerefOf (PLDP [Zero]) [0x08] = Local1
-                        CreateBitField (DerefOf (PLDP [Zero]), 0x40, VIS)
-                        If (!(PR2 & 0x2000))
-                        {
-                            VIS &= Zero
-                        }
-
-                        Return (PLDP)
-                    }
-                }
-
-                Device (HS15)
-                {
-                    Name (_ADR, 0x0F)  // _ADR: Address
-                    Method (_STA, 0, Serialized)  // _STA: Status
-                    {
-                        If (((CDID & 0xF000) == 0x8000))
-                        {
-                            Return (0x0F)
-                        }
-                        Else
-                        {
-                            Return (Zero)
-                        }
-                    }
-
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
-                    {
-                        Name (UPCP, Package (0x04)
-                        {
-                            Zero, 
-                            Zero, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR2 & 0x4000))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [0x0E])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
-
-                    Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
-                    {
-                        Name (PLDP, Package (0x01)
-                        {
-                            Buffer (0x10)
-                            {
-                                /* 0000 */  0x81, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                /* 0008 */  0x30, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 
-                            }
-                        })
-                        Local0 = DerefOf (VISB [0x0E])
-                        Local1 = DerefOf (DerefOf (PLDP [Zero]) [0x08])
-                        Local1 &= 0xFE
-                        Local1 |= Local0
-                        DerefOf (PLDP [Zero]) [0x08] = Local1
-                        CreateBitField (DerefOf (PLDP [Zero]), 0x40, VIS)
-                        If (!(PR2 & 0x4000))
-                        {
-                            VIS &= Zero
-                        }
-
-                        Return (PLDP)
-                    }
-                }
-
                 Device (SSP1)
                 {
                     Method (_ADR, 0, Serialized)  // _ADR: Address
@@ -6189,24 +5635,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     }
 
                     Name (_STA, 0x0F)  // _STA: Status
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
+                    Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
                     {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            0x03, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR3 & One))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [Zero])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
+                        0xFF, 
+                        0x03, 
+                        Zero, 
+                        Zero
+                    })
 
                     Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
                     {
@@ -6248,24 +5683,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     }
 
                     Name (_STA, 0x0F)  // _STA: Status
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
+                    Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
                     {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            0x03, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR3 & 0x02))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [One])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
+                        0xFF, 
+                        0x03, 
+                        Zero, 
+                        Zero
+                    })
 
                     Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
                     {
@@ -6307,24 +5731,13 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     }
 
                     Name (_STA, 0x0F)  // _STA: Status
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
+                    Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
                     {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            0x03, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR3 & 0x04))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [0x02])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
+                        0xFF, 
+                        0x03, 
+                        Zero, 
+                        Zero
+                    })
 
                     Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
                     {
@@ -6343,183 +5756,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                         DerefOf (PLDP [Zero]) [0x08] = Local1
                         CreateBitField (DerefOf (PLDP [Zero]), 0x40, VIS)
                         If (!(PR3 & 0x04))
-                        {
-                            VIS &= Zero
-                        }
-
-                        Return (PLDP)
-                    }
-                }
-
-                Device (SSP4)
-                {
-                    Method (_ADR, 0, Serialized)  // _ADR: Address
-                    {
-                        If (((CDID & 0xF000) == 0x8000))
-                        {
-                            Return (0x13)
-                        }
-                        Else
-                        {
-                            Return (0x0D)
-                        }
-                    }
-
-                    Name (_STA, 0x0F)  // _STA: Status
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
-                    {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            0x03, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR3 & 0x08))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [0x03])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
-
-                    Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
-                    {
-                        Name (PLDP, Package (0x01)
-                        {
-                            Buffer (0x10)
-                            {
-                                /* 0000 */  0x01, 0xC6, 0x72, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                /* 0008 */  0x71, 0x0C, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00 
-                            }
-                        })
-                        Local0 = DerefOf (VISB [0x03])
-                        Local1 = DerefOf (DerefOf (PLDP [Zero]) [0x08])
-                        Local1 &= 0xFE
-                        Local1 |= Local0
-                        DerefOf (PLDP [Zero]) [0x08] = Local1
-                        CreateBitField (DerefOf (PLDP [Zero]), 0x40, VIS)
-                        If (!(PR3 & 0x08))
-                        {
-                            VIS &= Zero
-                        }
-
-                        Return (PLDP)
-                    }
-                }
-
-                Device (SSP5)
-                {
-                    Name (_ADR, 0x14)  // _ADR: Address
-                    Method (_STA, 0, Serialized)  // _STA: Status
-                    {
-                        If (((CDID & 0xF000) == 0x8000))
-                        {
-                            Return (0x0F)
-                        }
-                        Else
-                        {
-                            Return (Zero)
-                        }
-                    }
-
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
-                    {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            0x03, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR3 & 0x10))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [0x04])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
-
-                    Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
-                    {
-                        Name (PLDP, Package (0x01)
-                        {
-                            Buffer (0x10)
-                            {
-                                /* 0000 */  0x01, 0xC6, 0x72, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                /* 0008 */  0x71, 0x0C, 0x80, 0x02, 0x00, 0x00, 0x00, 0x00 
-                            }
-                        })
-                        Local0 = DerefOf (VISB [0x04])
-                        Local1 = DerefOf (DerefOf (PLDP [Zero]) [0x08])
-                        Local1 &= 0xFE
-                        Local1 |= Local0
-                        DerefOf (PLDP [Zero]) [0x08] = Local1
-                        CreateBitField (DerefOf (PLDP [Zero]), 0x40, VIS)
-                        If (!(PR3 & 0x10))
-                        {
-                            VIS &= Zero
-                        }
-
-                        Return (PLDP)
-                    }
-                }
-
-                Device (SSP6)
-                {
-                    Name (_ADR, 0x15)  // _ADR: Address
-                    Method (_STA, 0, Serialized)  // _STA: Status
-                    {
-                        If (((CDID & 0xF000) == 0x8000))
-                        {
-                            Return (0x0F)
-                        }
-                        Else
-                        {
-                            Return (Zero)
-                        }
-                    }
-
-                    Method (_UPC, 0, Serialized)  // _UPC: USB Port Capabilities
-                    {
-                        Name (UPCP, Package (0x04)
-                        {
-                            0xFF, 
-                            0x03, 
-                            Zero, 
-                            Zero
-                        })
-                        If (!(PR3 & 0x20))
-                        {
-                            UPCP [Zero] = Zero
-                        }
-
-                        Local0 = DerefOf (CNTB [0x05])
-                        UPCP [Zero] = Local0
-                        Return (UPCP)
-                    }
-
-                    Method (_PLD, 0, Serialized)  // _PLD: Physical Location of Device
-                    {
-                        Name (PLDP, Package (0x01)
-                        {
-                            Buffer (0x10)
-                            {
-                                /* 0000 */  0x01, 0xC6, 0x72, 0x00, 0x00, 0x00, 0x00, 0x00,
-                                /* 0008 */  0x71, 0x0C, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00 
-                            }
-                        })
-                        Local0 = DerefOf (VISB [0x05])
-                        Local1 = DerefOf (DerefOf (PLDP [Zero]) [0x08])
-                        Local1 &= 0xFE
-                        Local1 |= Local0
-                        DerefOf (PLDP [Zero]) [0x08] = Local1
-                        CreateBitField (DerefOf (PLDP [Zero]), 0x40, VIS)
-                        If (!(PR3 & 0x20))
                         {
                             VIS &= Zero
                         }
