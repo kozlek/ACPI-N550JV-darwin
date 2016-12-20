@@ -10763,12 +10763,12 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     PBIF [0x06] = (DerefOf (PBIF [0x06]) * Local0)
                     PBIF [0x07] = (DerefOf (PBIF [0x07]) * Local0)
                     PBIF [0x08] = (DerefOf (PBIF [0x08]) * Local0)
-                    Divide (DerefOf (PBIF [One]), 0x03E8, Local2, PBIF [One])
-                    Divide (DerefOf (PBIF [0x02]), 0x03E8, Local2, PBIF [0x02])
-                    Divide (DerefOf (PBIF [0x05]), 0x03E8, Local2, PBIF [0x05])
-                    Divide (DerefOf (PBIF [0x06]), 0x03E8, Local2, PBIF [0x06])
-                    Divide (DerefOf (PBIF [0x07]), 0x03E8, Local2, PBIF [0x07])
-                    Divide (DerefOf (PBIF [0x08]), 0x03E8, Local2, PBIF [0x08])
+                    PBIF [One] = DerefOf (PBIF [One]) / 0x03E8
+                    PBIF [0x02] = DerefOf (PBIF [0x02]) / 0x03E8
+                    PBIF [0x05] = DerefOf (PBIF [0x05]) / 0x03E8
+                    PBIF [0x06] = DerefOf (PBIF [0x06]) / 0x03E8
+                    PBIF [0x07] = DerefOf (PBIF [0x07]) / 0x03E8
+                    PBIF [0x08] = DerefOf (PBIF [0x08]) / 0x03E8
                 }
             }
 
@@ -10912,9 +10912,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     PBST [0x03] = ^^LPCB.EC0.B0DV
                     Local0 = DerefOf (PBST [0x03])
                     PBST [One] = (DerefOf (PBST [One]) * Local0)
-                    Divide (DerefOf (PBST [One]), 0x03E8, Local1, PBST [One])
+                    PBST [One] = DerefOf (PBST [One]) / 0x03E8
                     PBST [0x02] = (DerefOf (PBST [0x02]) * Local0)
-                    Divide (DerefOf (PBST [0x02]), 0x03E8, Local1, PBST [0x02])
+                    PBST [0x02] = DerefOf (PBST [0x02]) / 0x03E8
                 }
             }
 
@@ -15123,22 +15123,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             }
 
             Return (Local0)
-        }
-
-        Method (TCHG, 0, NotSerialized)
-        {
-        }
-
-        Method (THDL, 0, NotSerialized)
-        {
-        }
-
-        Method (TMSS, 1, NotSerialized)
-        {
-        }
-
-        Method (TMSW, 1, NotSerialized)
-        {
         }
     }
 
