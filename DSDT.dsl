@@ -5056,6 +5056,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
                 Return (TEMP)
             }
+            
+            Return (Zero)
         }
 
         Method (RDGP, 1, Serialized)
@@ -5072,6 +5074,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
                 Return (TEMP)
             }
+            
+            Return (Zero)
         }
 
         Method (WTGP, 2, Serialized)
@@ -6959,29 +6963,27 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
     Method (SPL1, 0, Serialized)
     {
         Name (PPUU, Zero)
-        If ((CSEM == One))
+        If ((CSEM != One))
         {
-            Return (Zero)
-        }
+            CSEM = One
+            PLSV = PPL1
+            PLEN = PL1E
+            CLMP = CLP1
+            If ((PWRU == Zero))
+            {
+                PPUU = One
+            }
+            Else
+            {
+                PPUU = (PWRU-- << 0x02)
+            }
 
-        CSEM = One
-        PLSV = PPL1
-        PLEN = PL1E
-        CLMP = CLP1
-        If ((PWRU == Zero))
-        {
-            PPUU = One
-        }
-        Else
-        {
-            PPUU = (PWRU-- << 0x02)
-        }
-
-        Local0 = (PLVL * PPUU)
-        Local1 = (Local0 / 0x03E8)
-        PPL1 = Local1
-        PL1E = One
-        CLP1 = One
+            Local0 = (PLVL * PPUU)
+            Local1 = (Local0 / 0x03E8)
+            PPL1 = Local1
+            PL1E = One
+            CLP1 = One
+        }        
     }
 
     Method (RPL1, 0, Serialized)
@@ -10569,6 +10571,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 {
                     Return (One)
                 }
+                
+                Return (Zero)
             }
 
             Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -13570,22 +13574,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             Return (Local0)
         }
 
-        Method (OGDP, 1, NotSerialized)
-        {
-            Local0 = Arg0
-            Local1 = 0x02
-            Return (Local1)
-        }
-
         Method (RSID, 0, NotSerialized)
         {
             Return (Zero)
-        }
-
-        Method (OSDP, 2, NotSerialized)
-        {
-            Local0 = Arg0
-            Local1 = Arg1
         }
 
         Method (MF42, 3, Serialized)
@@ -14339,7 +14330,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Release (MUEC)
             Return (Local1)
-            Return (Ones)
         }
 
         Method (WBAT, 3, Serialized)
@@ -14370,7 +14360,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Release (MUEC)
             Return (Local1)
-            Return (Ones)
         }
 
         Method (FNCT, 2, Serialized)
@@ -17853,14 +17842,12 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             \_SB.TGST = Arg0
             If (Arg0)
             {
-                Local0 = \_SB.PCI0.LPCB.EC0.ST87 (0x40, 0xFF)
+                \_SB.PCI0.LPCB.EC0.ST87 (0x40, 0xFF)
             }
             Else
             {
-                Local0 = \_SB.PCI0.LPCB.EC0.ST87 (0x20, 0xFF)
+                \_SB.PCI0.LPCB.EC0.ST87 (0x20, 0xFF)
             }
-
-            Return (One)
         }
 
         Method (OHWS, 0, Serialized)
@@ -22396,37 +22383,35 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         {
             FBDL = Zero
             CBDL = Arg0
-            If ((CBDL == Zero))
+            If ((CBDL != Zero))
             {
-                Return (Zero)
-            }
-
-            If ((HSTR == 0x03))
-            {
-                If ((LREV == Zero))
+                If ((HSTR == 0x03))
                 {
-                    FBDL = (0x08 - CBDL)
+                    If ((LREV == Zero))
+                    {
+                        FBDL = (0x08 - CBDL)
+                    }
+                    Else
+                    {
+                        FBDL = Zero
+                    }
+                }
+                ElseIf ((LREV == Zero))
+                {
+                    FBDL = (0x04 - CBDL)
                 }
                 Else
                 {
-                    FBDL = Zero
+                    FBDL = 0x04
                 }
-            }
-            ElseIf ((LREV == Zero))
-            {
-                FBDL = (0x04 - CBDL)
-            }
-            Else
-            {
-                FBDL = 0x04
-            }
 
-            INDX = One
-            While ((INDX <= CBDL))
-            {
-                BSPR (FBDL, One)
-                FBDL++
-                INDX++
+                INDX = One
+                While ((INDX <= CBDL))
+                {
+                    BSPR (FBDL, One)
+                    FBDL++
+                    INDX++
+                }
             }
         }
 
