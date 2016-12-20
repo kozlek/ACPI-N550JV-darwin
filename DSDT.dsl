@@ -1794,7 +1794,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 {
                     Return (^XHC.POSC (Arg1, Arg2, Arg3))
                 }
-                ElseIf ((MSOS () >= OSW8))
+                Else
                 {
                     If ((XCNT == Zero))
                     {
@@ -3247,16 +3247,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     })
                     Method (_STA, 0, NotSerialized)  // _STA: Status
                     {
-                        If ((OSYS >= 0x07D1))
+                        If (HPAE)
                         {
-                            If (HPAE)
-                            {
-                                Return (0x0F)
-                            }
-                        }
-                        ElseIf (HPAE)
-                        {
-                            Return (0x0B)
+                            Return (0x0F)
                         }
 
                         Return (Zero)
@@ -7100,70 +7093,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
         Method (_INI, 0, NotSerialized)  // _INI: Initialize
         {
-            OSYS = 0x07DC
-            If (CondRefOf (\_OSI, Local0))
-            {
-                If (_OSI ("Linux"))
-                {
-                    OSYS = 0x03E8
-                }
-
-                If (_OSI ("Windows 2001"))
-                {
-                    OSYS = 0x07D1
-                }
-
-                If (_OSI ("Windows 2001 SP1"))
-                {
-                    OSYS = 0x07D1
-                }
-
-                If (_OSI ("Windows 2001 SP2"))
-                {
-                    OSYS = 0x07D2
-                }
-
-                If (_OSI ("Windows 2001.1"))
-                {
-                    OSYS = 0x07D3
-                }
-
-                If (_OSI ("Windows 2006"))
-                {
-                    OSYS = 0x07D6
-                }
-
-                If (_OSI ("Windows 2009"))
-                {
-                    OSYS = 0x07D9
-                }
-
-                If (_OSI ("Windows 2012"))
-                {
-                    OSYS = 0x07DC
-                }
-
-                If (_OSI ("Windows 2013"))
-                {
-                    OSYS = 0x07DD
-                }
-            }
-            ElseIf (MCTH (_OS, "Microsoft Windows"))
-            {
-                OSYS = 0x07CE
-            }
-            ElseIf (MCTH (_OS, "Microsoft WindowsME: Millennium Edition"))
-            {
-                OSYS = 0x07D0
-            }
-            ElseIf (MCTH (_OS, "Microsoft Windows NT"))
-            {
-                OSYS = 0x07D0
-            }
-            Else
-            {
-                OSYS = 0x07D1
-            }
+            OSYS = 0x2710
         }
 
         Method (NHPG, 0, Serialized)
@@ -7621,14 +7551,11 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             })
             Method (_STA, 0, NotSerialized)  // _STA: Status
             {
-                If ((OSYS >= 0x07DC))
+                If (((CDID & 0xF000) == 0x9000))
                 {
-                    If (((CDID & 0xF000) == 0x9000))
+                    If ((S0ID == One))
                     {
-                        If ((S0ID == One))
-                        {
-                            Return (0x0F)
-                        }
+                        Return (0x0F)
                     }
                 }
 
@@ -8431,11 +8358,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_INI, 0, NotSerialized)  // _INI: Initialize
             {
-                If ((MSOS () <= OSME))
-                {
-                    ECFL = One
-                }
-
                 KINI ()
             }
 
@@ -8730,75 +8652,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         }
 
         Name (OSFG, Zero)
-        Name (OS9X, One)
-        Name (OS98, 0x02)
-        Name (OSME, 0x04)
-        Name (OS2K, 0x08)
-        Name (OSXP, 0x10)
-        Name (OSEG, 0x20)
-        Name (OSVT, 0x40)
-        Name (OSW7, 0x80)
-        Name (OSW8, 0x0100)
-        Name (OS13, 0x0110)
-        Name (OS14, 0x0120)
-        Name (OS15, 0x0130)
-        Name (OS16, 0x0140)
-        Name (OS17, 0x0150)
-        Method (MCTH, 2, Serialized)
-        {
-            If ((SizeOf (Arg0) < SizeOf (Arg1)))
-            {
-                Return (Zero)
-            }
-
-            Local0 = (SizeOf (Arg0) + One)
-            Name (BUF0, Buffer (Local0) {})
-            Name (BUF1, Buffer (Local0) {})
-            BUF0 = Arg0
-            BUF1 = Arg1
-            While (Local0)
-            {
-                Local0--
-                If ((DerefOf (BUF0 [Local0]) != DerefOf (BUF1 [Local0])))
-                {
-                    Return (Zero)
-                }
-            }
-
-            Return (One)
-        }
 
         Method (MSOS, 0, NotSerialized)
         {
-            If ((OSYS >= 0x07DC))
-            {
-                OSFG = OSW8
-            }
-            ElseIf ((OSYS == 0x07D9))
-            {
-                OSFG = OSW7
-            }
-            ElseIf ((OSYS == 0x07D6))
-            {
-                OSFG = OSVT
-            }
-            ElseIf (((OSYS >= 0x07D1) && (OSYS <= 0x07D3)))
-            {
-                OSFG = OSXP
-            }
-            ElseIf ((OSYS == 0x07D0))
-            {
-                OSFG = OSME
-            }
-            ElseIf ((OSYS == 0x07CE))
-            {
-                OSFG = OS98
-            }
-            Else
-            {
-                OSFG = OSW8
-            }
-
+            OSFG = 0x0100
             Return (OSFG)
         }
 
@@ -9091,19 +8948,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
                     If ((IIA0 == 0x00050012))
                     {
-                        If ((MSOS () >= OSW8))
-                        {
-                            Local0 = (0x64 - Zero)
-                            Local0 <<= 0x08
-                            Local1 = (Local0 + 0x64)
-                        }
-                        Else
-                        {
-                            Local0 = 0x0A
-                            Local0 <<= 0x08
-                            Local1 = (GPLV () + Local0)
-                        }
-
+                        Local0 = (0x64 - Zero)
+                        Local0 <<= 0x08
+                        Local1 = (Local0 + 0x64)
                         Return (Local1)
                     }
 
@@ -9750,12 +9597,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 {
                     If ((IIA0 == 0x80))
                     {
-                        If ((MSOS () >= OSVT))
-                        {
-                            Return (Zero)
-                        }
-
-                        Return (One)
+                        Return (Zero)
                     }
 
                     If ((IIA0 > 0x0F))
@@ -10577,14 +10419,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_STA, 0, NotSerialized)  // _STA: Status
             {
-                If ((MSOS () >= OSW8))
-                {
-                    Return (0x0F)
-                }
-                Else
-                {
-                    Return (Zero)
-                }
+                Return (0x0F)
             }
         }
     }
@@ -11432,14 +11267,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         {
             If ((Arg0 == 0x03))
             {
-                If ((MSOS () <= OSME))
-                {
-                    \_SB.WIDE = One
-                }
-                Else
-                {
-                    \_SB.WIDE = Zero
-                }
+                \_SB.WIDE = Zero
             }
 
             SBRS (Arg0)
@@ -11478,14 +11306,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             \_SB.PCI0.LPCB.EC0.EC0W (Arg0)
             If ((Arg0 == 0x04))
             {
-                If ((MSOS () <= OSME))
-                {
-                    MES4 = 0x02
-                }
-                Else
-                {
-                    MES4 = Zero
-                }
+                MES4 = Zero
             }
 
             SBRW (Arg0)
@@ -14150,66 +13971,16 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         }
 
         Method (STBR, 0, Serialized)
-        {
-            Local0 = Zero
-            Local1 = Zero
-            Local2 = Zero
-            If ((VGAF & One))
-            {
-                Local0 = One
-            }
-
-            If (Local0)
-            {
-                Local2 = One
-            }
-
-            If (Local1)
-            {
-                ISMI (0x9A)
-            }
-            ElseIf ((Local2 == One))
-            {
-                If ((MSOS () != OSEG))
-                {
-                    If ((MSOS () < OSW8))
-                    {
-                        Local4 = BRTI
-                        Local4 <<= 0x04
-                        Local3 = LBTN
-                        Local3 = (Local4 + Local3)
-                        ^^^IGPU.AINT (One, ((DerefOf (PWAC [Local3]) * 0x64) / 0xFF))
-                    }
-                }
-                Else
-                {
-                    ISMI (0x9A)
-                }
-            }
-            ElseIf ((Local2 == Zero))
+        {            
+            If (!(VGAF & One))
             {
                 ECCB ()
-            }
-            ElseIf ((Local2 == 0x02))
-            {
-                ISMI (0x9A)
-            }
-            Else
-            {
             }
         }
 
         Method (ECCB, 0, Serialized)
         {
-            If ((ACAP () || (MSOS () == OSVT)))
-            {
-                Local0 = LBTN
-            }
-            Else
-            {
-                Local0 = LBTN
-            }
-
+            Local0 = LBTN
             Local1 = BRTI
             Local1 <<= 0x04
             Local1 += Local0
@@ -15492,189 +15263,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
         Method (_Q0B, 0, NotSerialized)  // _Qxx: EC Query
         {
-            If ((MSOS () >= OSW8))
-            {
-                Notify (ASHS, 0x88)
-            }
-            ElseIf ((^^^^ATKD.WAPF & 0x04))
-            {
-                If (ATKP)
-                {
-                    ^^^^ATKD.IANE (0x88)
-                }
-            }
-            Else
-            {
-                Local0 = OHWR ()
-                If ((Local0 & 0x02))
-                {
-                    If ((Local0 & One))
-                    {
-                        Local0 = One
-                    }
-                    Else
-                    {
-                        Local0 = Zero
-                    }
-                }
-                Else
-                {
-                    Local0 = One
-                }
-
-                If (Local0)
-                {
-                    If ((^^^^ATKD.WAPF & One))
-                    {
-                        If ((WLDP && BTDP))
-                        {
-                            Local0 = WRST
-                            Local0 |= (BRST << One)
-                            Local0++
-                            If ((Local0 > 0x03))
-                            {
-                                Local0 = Zero
-                            }
-
-                            Local1 = DerefOf (WBTL [Local0])
-                            If ((Local1 == Zero))
-                            {
-                                ^^^^ATKD.IANE (0x74)
-                                OWLD (Zero)
-                                Sleep (0x0DAC)
-                                OBTD (Zero)
-                            }
-
-                            If ((Local1 == One))
-                            {
-                                ^^^^ATKD.IANE (0x73)
-                                OWLD (One)
-                                Sleep (0x0DAC)
-                                OBTD (One)
-                            }
-
-                            If ((Local1 == 0x02))
-                            {
-                                ^^^^ATKD.IANE (0x74)
-                                OWLD (Zero)
-                                Sleep (0x0DAC)
-                                OBTD (Zero)
-                            }
-
-                            If ((Local1 == 0x03))
-                            {
-                                ^^^^ATKD.IANE (0x74)
-                                OWLD (Zero)
-                                Sleep (0x0DAC)
-                                OBTD (Zero)
-                            }
-                        }
-                        ElseIf (WLDP)
-                        {
-                            ^^^^ATKD.IANE (0x5D)
-                        }
-                        ElseIf (BTDP)
-                        {
-                            If (BRST)
-                            {
-                                OBTD (Zero)
-                                ^^^^ATKD.IANE (0x7E)
-                            }
-                            Else
-                            {
-                                OBTD (One)
-                                ^^^^ATKD.IANE (0x7D)
-                            }
-                        }
-                    }
-                    ElseIf ((WLDP && BTDP))
-                    {
-                        Local0 = WRST
-                        Local0 |= (BRST << One)
-                        Local0++
-                        If ((Local0 > 0x03))
-                        {
-                            Local0 = Zero
-                        }
-
-                        Local1 = DerefOf (WBTL [Local0])
-                        If ((Local1 == Zero))
-                        {
-                            OWLD (Zero)
-                            ^^^^ATKD.IANE (0x5F)
-                            Sleep (0x0DAC)
-                            OBTD (Zero)
-                            ^^^^ATKD.IANE (0x7E)
-                        }
-
-                        If ((Local1 == One))
-                        {
-                            OWLD (One)
-                            ^^^^ATKD.IANE (0x5E)
-                            Sleep (0x0DAC)
-                            OBTD (Zero)
-                            ^^^^ATKD.IANE (0x7E)
-                        }
-
-                        If ((Local1 == 0x02))
-                        {
-                            OWLD (Zero)
-                            ^^^^ATKD.IANE (0x5F)
-                            Sleep (0x0DAC)
-                            OBTD (One)
-                            ^^^^ATKD.IANE (0x7D)
-                        }
-
-                        If ((Local1 == 0x03))
-                        {
-                            OWLD (One)
-                            ^^^^ATKD.IANE (0x5E)
-                            Sleep (0x0DAC)
-                            OBTD (One)
-                            ^^^^ATKD.IANE (0x7D)
-                        }
-                    }
-                    ElseIf (WLDP)
-                    {
-                        If (WRST)
-                        {
-                            OWLD (Zero)
-                            ^^^^ATKD.IANE (0x5F)
-                        }
-                        Else
-                        {
-                            OWLD (One)
-                            ^^^^ATKD.IANE (0x5E)
-                        }
-                    }
-                    ElseIf (BTDP)
-                    {
-                        If (BRST)
-                        {
-                            OBTD (Zero)
-                            ^^^^ATKD.IANE (0x7E)
-                        }
-                        Else
-                        {
-                            OBTD (One)
-                            ^^^^ATKD.IANE (0x7D)
-                        }
-                    }
-                }
-                Else
-                {
-                    If (WLDP) {}
-                    If ((WLDP && BTDP))
-                    {
-                        Sleep (0x0DAC)
-                    }
-
-                    If (BTDP)
-                    {
-                        ^^^^ATKD.IANE (0x7E)
-                    }
-                }
-            }
+            Notify (ASHS, 0x88)
         }
 
         Name (WBTL, Package (0x04)
@@ -15749,91 +15338,15 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
         Method (_Q11, 0, Serialized)  // _Qxx: EC Query
         {
-            Name (T_0, Zero)  // _T_x: Emitted by ASL Compiler
-            If ((MSOS () >= OSW8))
+            If ((F8FG == Zero))
             {
-                If ((F8FG == Zero))
-                {
-                    F8FG = One
-                    STB2 (0xE0)
-                    STB2 (0x5B)
-                }
-
-                STB2 (0x19)
-                STB2 (0x99)
-                Return (One)
+                F8FG = One
+                STB2 (0xE0)
+                STB2 (0x5B)
             }
 
-            FHKW ()
-            Local0 = ADVG ()
-            If (NATK ())
-            {
-                If ((Local0 < 0x08))
-                {
-                    Local1 = (Local0 + 0x60)
-                }
-                ElseIf ((Local0 < 0x10))
-                {
-                    Local1 = (Local0 - 0x08)
-                    Local1 += 0x8C
-                }
-                ElseIf ((Local0 < 0x20))
-                {
-                    Local1 = (Local0 & 0x07)
-                    Local1 += 0xA0
-                }
-                ElseIf ((Local0 < 0x40))
-                {
-                    While (One)
-                    {
-                        T_0 = ToInteger (Local0)
-                        If ((T_0 == 0x20))
-                        {
-                            Local1 = 0xD0
-                        }
-                        ElseIf ((T_0 == 0x21))
-                        {
-                            Local1 = 0xD1
-                        }
-                        ElseIf ((T_0 == 0x22))
-                        {
-                            Local1 = 0xD2
-                        }
-                        ElseIf ((T_0 == 0x24))
-                        {
-                            Local1 = 0xD3
-                        }
-                        ElseIf ((T_0 == 0x28))
-                        {
-                            Local1 = 0xD4
-                        }
-                        ElseIf ((T_0 == 0x30))
-                        {
-                            Local1 = 0xD5
-                        }
-
-                        Break
-                    }
-                }
-
-                If (ATKP)
-                {
-                    If ((Local1 != 0x60))
-                    {
-                        ^^^^ATKD.IANE (Local1)
-                    }
-                }
-                Else
-                {
-                    SWHG (Local0)
-                }
-            }
-            Else
-            {
-                SWHG (Local0)
-            }
-
-            FHKS ()
+            STB2 (0x19)
+            STB2 (0x99)
         }
 
         Method (_Q12, 0, NotSerialized)  // _Qxx: EC Query
@@ -15853,63 +15366,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
         Method (_Q13, 0, NotSerialized)  // _Qxx: EC Query
         {
-            If ((MSOS () >= OSW8))
-            {
-                STB2 (0xE0)
-                STB2 (0x20)
-                STB2 (0xE0)
-                STB2 (0xA0)
-                Return (One)
-            }
-
-            If (ATKP)
-            {
-                ^^^^ATKD.IANE (0x32)
-            }
+            STB2 (0xE0)
+            STB2 (0x20)
+            STB2 (0xE0)
+            STB2 (0xA0)
         }
 
         Method (_Q14, 0, NotSerialized)  // _Qxx: EC Query
         {
-            If ((MSOS () >= OSW8))
-            {
-                STB2 (0xE0)
-                STB2 (0x2E)
-                STB2 (0xE0)
-                STB2 (0xAE)
-                Return (One)
-            }
-
-            If ((AVOL < 0x0F))
-            {
-                AVOL++
-            }
-
-            If (ATKP)
-            {
-                ^^^^ATKD.IANE (0x31)
-            }
+            STB2 (0xE0)
+            STB2 (0x2E)
+            STB2 (0xE0)
+            STB2 (0xAE)
         }
 
         Method (_Q15, 0, NotSerialized)  // _Qxx: EC Query
         {
-            If ((MSOS () >= OSW8))
-            {
-                STB2 (0xE0)
-                STB2 (0x30)
-                STB2 (0xE0)
-                STB2 (0xB0)
-                Return (One)
-            }
-
-            If ((AVOL > Zero))
-            {
-                AVOL--
-            }
-
-            If (ATKP)
-            {
-                ^^^^ATKD.IANE (0x30)
-            }
+            STB2 (0xE0)
+            STB2 (0x30)
+            STB2 (0xE0)
+            STB2 (0xB0)
         }
 
         Method (_Q6F, 0, NotSerialized)  // _Qxx: EC Query
@@ -16161,10 +15637,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 Local0 = 0x57
             }
 
-            If ((MSOS () != OSVT))
-            {
-                STBR ()
-            }
+            STBR ()
 
             Notify (AC0, 0x80)
             If (ATKP)
@@ -16566,7 +16039,6 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         Method (_Q79, 0, NotSerialized)  // _Qxx: EC Query
         {
             ^^^^ATKD.IANE (0xB1)
-            Return (One)
         }
     }
 
@@ -17837,18 +17309,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
         Method (KINI, 0, Serialized)
         {
-            If ((MSOS () >= OSW8))
-            {
-                \_SB.PCI0.LPCB.EC0.STB1 (0x02)
-                \_SB.PCI0.LPCB.EC0.STB1 (0x04)
-                \_SB.FNIV = Zero
-            }
-            Else
-            {
-                \_SB.PCI0.LPCB.EC0.STB1 (0x02)
-                \_SB.PCI0.LPCB.EC0.STB1 (0x03)
-                \_SB.FNIV = Zero
-            }
+            \_SB.PCI0.LPCB.EC0.STB1 (0x02)
+            \_SB.PCI0.LPCB.EC0.STB1 (0x04)
+            \_SB.FNIV = Zero
         }
     }
 
@@ -19899,51 +19362,29 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
                 Method (_BCL, 0, Serialized)  // _BCL: Brightness Control Levels
                 {
-                    If ((\MSOS () >= \OSW8))
+                    Local0 = (0x64 + One)
+                    Local0 += 0x02
+                    Name (BRPP, Package (0x67) {})
+                    BRPP [Zero] = 0x64
+                    BRPP [One] = 0x28
+                    Local1 = 0x02
+                    Local2 = 0x64
+                    While ((Local1 < Local0))
                     {
-                        Local0 = (0x64 + One)
-                        Local0 += 0x02
-                        Name (BRPP, Package (0x67) {})
-                        BRPP [Zero] = 0x64
-                        BRPP [One] = 0x28
-                        Local1 = 0x02
-                        Local2 = 0x64
-                        While ((Local1 < Local0))
-                        {
-                            BRPP [Local1] = Local2
-                            Local1++
-                            Local2--
-                        }
-
-                        Local0 = Zero
-                        While ((Local0 <= 0x0A))
-                        {
-                            PCTG [(0x0A - Local0)] = (Local0 * 0x0A)
-                            Local0++
-                        }
-
-                        MINB ()
-                        Return (BRPP)
+                        BRPP [Local1] = Local2
+                        Local1++
+                        Local2--
                     }
-                    Else
+
+                    Local0 = Zero
+                    While ((Local0 <= 0x0A))
                     {
-                        Local0 = Zero
-                        Local4 = BRTI
-                        Local4 <<= 0x04
-                        While ((Local0 < 0x0B))
-                        {
-                            Local3 = (0x0B - Local0)
-                            Local3 -= One
-                            Local3 = (Local4 + Local3)
-                            Local1 = DerefOf (\_SB.PCI0.LPCB.EC0.PWAC [Local3])
-                            Local2 = ((Local1 * 0x64) / 0xFF)
-                            PCTG [Local0] = Local2
-                            Local0++
-                        }
-
-                        MINB ()
-                        Return (PCTG)
+                        PCTG [(0x0A - Local0)] = (Local0 * 0x0A)
+                        Local0++
                     }
+
+                    MINB ()
+                    Return (BRPP)
                 }
 
                 Method (_BCM, 1, NotSerialized)  // _BCM: Brightness Control Method
@@ -19963,21 +19404,8 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
                 Method (_BQC, 0, NotSerialized)  // _BQC: Brightness Query Current
                 {
-                    If ((\MSOS () >= \OSW8))
-                    {
-                        Local0 = (CBLV & 0x7FFFFFFF)
-                        Return (Local0)
-                    }
-                    Else
-                    {
-                        Local1 = BRTI
-                        Local1 <<= 0x04
-                        Local2 = LBTN
-                        Local2 = (Local1 + Local2)
-                        Local3 = (DerefOf (\_SB.PCI0.LPCB.EC0.PWAC [Local2]) * 0x64)
-                        Local3 = (Local3 / 0xFF)
-                        Return (Local3)
-                    }
+                    Local0 = (CBLV & 0x7FFFFFFF)
+                    Return (Local0)
                 }
             }
 
@@ -21390,46 +20818,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     Local0 = CBLV
                     BCMD = Zero
                     Notify (LCDD, 0x86)
-                    Local2 = 0x012C
                     Local1 = (Local0 & 0x7FFFFFFF)
                     If ((Local1 >= DerefOf (PCTG [One])))
                     {
-                        Local2 = Zero
                         Local1 = One
-                    }
-
-                    If ((\MSOS () < \OSW8))
-                    {
-                        While ((!BCMD && Local2))
-                        {
-                            Local1 = CBLV
-                            If (!(Local1 & 0x80000000))
-                            {
-                                Local1 = Local0
-                            }
-
-                            If ((Local0 == Local1))
-                            {
-                                Sleep (0x0A)
-                                Local2--
-                                Local1 = Zero
-                            }
-                            Else
-                            {
-                                Local2 = Zero
-                                Local1 = One
-                            }
-                        }
-                    }
-
-                    If ((!BCMD && Local1))
-                    {
-                        If ((\MSOS () < \OSW8))
-                        {
-                            Local3 = GCBL (CBLV)
-                            Local3 = (0x0A - Local3)
-                            LBTN = Local3
-                        }
                     }
                 }
                 Else
@@ -21463,46 +20855,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     Local0 = CBLV
                     BCMD = Zero
                     Notify (LCDD, 0x87)
-                    Local2 = 0x012C
                     Local1 = (Local0 & 0x7FFFFFFF)
                     If ((Local1 <= DerefOf (PCTG [0x0A])))
                     {
-                        Local2 = Zero
                         Local1 = One
-                    }
-
-                    If ((\MSOS () < \OSW8))
-                    {
-                        While ((!BCMD && Local2))
-                        {
-                            Local1 = CBLV
-                            If (!(Local1 & 0x80000000))
-                            {
-                                Local1 = Local0
-                            }
-
-                            If ((Local0 == Local1))
-                            {
-                                Sleep (0x0A)
-                                Local2--
-                                Local1 = Zero
-                            }
-                            Else
-                            {
-                                Local2 = Zero
-                                Local1 = One
-                            }
-                        }
-                    }
-
-                    If ((!BCMD && Local1))
-                    {
-                        If ((\MSOS () < \OSW8))
-                        {
-                            Local3 = GCBL (CBLV)
-                            Local3 = (0x0A - Local3)
-                            LBTN = Local3
-                        }
                     }
                 }
                 Else
@@ -21793,15 +21149,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     If ((\_SB.OCAD != \_SB.OPAD))
                     {
                         \_SB.OPAD = \_SB.OCAD
-                        If ((OSFG == OSXP))
-                        {
-                            Notify (\_SB.PCI0, Zero)
-                        }
-                        Else
-                        {
-                            Notify (\_SB.PCI0.IGPU, Zero)
-                        }
-
+                        Notify (\_SB.PCI0.IGPU, Zero)
                         Sleep (0x03E8)
                     }
 

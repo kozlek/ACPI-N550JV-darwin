@@ -1,1 +1,4 @@
-RTD3 always equals to Zero
+- RTD3 always equals to Zero
+
+- need to check the purpose of STBR and WMNB
+- strange declaration of _Q0B _Q11 _Q13 _Q14 _Q79
