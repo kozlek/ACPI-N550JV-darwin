@@ -9209,26 +9209,26 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         ADBG ("_WAK")
         If ((ICNF & 0x10))
         {
-            If ((\_SB.PCI0.GFX0.TCHE & 0x0100))
+            If ((\_SB.PCI0.IGPU.TCHE & 0x0100))
             {
                 If ((\_SB.IAOE.ITMR == One))
                 {
                     If (((\_SB.IAOE.IBT1 & One) && ((\_SB.IAOE.WKRS & 0x02) || (\_SB.IAOE.WKRS & 0x10))))
                     {
-                        \_SB.PCI0.GFX0.STAT = ((\_SB.PCI0.GFX0.STAT & 0xFFFFFFFFFFFFFFFC) | One)
+                        \_SB.PCI0.IGPU.STAT = ((\_SB.PCI0.IGPU.STAT & 0xFFFFFFFFFFFFFFFC) | One)
                     }
                     Else
                     {
-                        \_SB.PCI0.GFX0.STAT = (\_SB.PCI0.GFX0.STAT & 0xFFFFFFFFFFFFFFFC)
+                        \_SB.PCI0.IGPU.STAT = (\_SB.PCI0.IGPU.STAT & 0xFFFFFFFFFFFFFFFC)
                     }
                 }
                 ElseIf (((\_SB.IAOE.IBT1 & One) && ((\_SB.IAOE.WKRS & 0x02) || (\_SB.IAOE.WKRS & 0x10))))
                 {
-                    \_SB.PCI0.GFX0.STAT = ((\_SB.PCI0.GFX0.STAT & 0xFFFFFFFFFFFFFFFC) | One)
+                    \_SB.PCI0.IGPU.STAT = ((\_SB.PCI0.IGPU.STAT & 0xFFFFFFFFFFFFFFFC) | One)
                 }
                 Else
                 {
-                    \_SB.PCI0.GFX0.STAT = (\_SB.PCI0.GFX0.STAT & 0xFFFFFFFFFFFFFFFC)
+                    \_SB.PCI0.IGPU.STAT = (\_SB.PCI0.IGPU.STAT & 0xFFFFFFFFFFFFFFFC)
                 }
             }
 
@@ -9694,7 +9694,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 0x02, 
                 Package (0x01)
                 {
-                    "\\_SB.PCI0.GFX0"
+                    "\\_SB.PCI0.IGPU"
                 }, 
 
                 Package (0x01)
@@ -9706,7 +9706,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             {
                 Package (0x02)
                 {
-                    "\\_SB.PCI0.GFX0", 
+                    "\\_SB.PCI0.IGPU", 
                     0xFFFFFFFF
                 }, 
 
@@ -9816,7 +9816,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
                 Package (0x03)
                 {
-                    "\\_SB.PCI0.GFX0", 
+                    "\\_SB.PCI0.IGPU", 
                     One, 
                     Package (0x02)
                     {
@@ -10077,7 +10077,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                                         One, 
                                         Package (0x01)
                                         {
-                                            "\\_SB.PCI0.GFX0"
+                                            "\\_SB.PCI0.IGPU"
                                         }
                                     })
                                 }
@@ -10561,9 +10561,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
         Method (_L06, 0, NotSerialized)  // _Lxx: Level-Triggered GPE
         {
-            If ((\_SB.PCI0.GFX0.GSSE && !GSMI))
+            If ((\_SB.PCI0.IGPU.GSSE && !GSMI))
             {
-                \_SB.PCI0.GFX0.GSCI ()
+                \_SB.PCI0.IGPU.GSCI ()
             }
         }
 
@@ -10578,7 +10578,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             {
                 ADBG ("Rotation Lock")
                 Sleep (0x03E8)
-                \_SB.PCI0.GFX0.IUEH (0x04)
+                \_SB.PCI0.IGPU.IUEH (0x04)
             }
         }
     }
@@ -11456,9 +11456,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         Name (ONAM, "ASUSTeK")
         Method (ADVG, 0, NotSerialized)
         {
-            If (\_SB.PCI0.GFX0.PRST ())
+            If (\_SB.PCI0.IGPU.PRST ())
             {
-                Return (\_SB.PCI0.GFX0.ADVD ())
+                Return (\_SB.PCI0.IGPU.ADVD ())
             }
 
             If (\_SB.PCI0.PEG0.PEGP.PRST ()) {}
@@ -11467,9 +11467,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
         Method (GCDM, 0, NotSerialized)
         {
-            If (\_SB.PCI0.GFX0.PRST ())
+            If (\_SB.PCI0.IGPU.PRST ())
             {
-                Return (\_SB.PCI0.GFX0.GCDS ())
+                Return (\_SB.PCI0.IGPU.GCDS ())
             }
 
             If (\_SB.PCI0.PEG0.PEGP.PRST ()) {}
@@ -11478,9 +11478,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
         Method (SWHG, 1, Serialized)
         {
-            If (\_SB.PCI0.GFX0.PRST ())
+            If (\_SB.PCI0.IGPU.PRST ())
             {
-                \_SB.PCI0.GFX0.SWHD (Arg0)
+                \_SB.PCI0.IGPU.SWHD (Arg0)
                 Return (One)
             }
 
@@ -11494,9 +11494,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
         Method (NATK, 0, NotSerialized)
         {
-            If (\_SB.PCI0.GFX0.PRST ())
+            If (\_SB.PCI0.IGPU.PRST ())
             {
-                Return (\_SB.PCI0.GFX0.NATK ())
+                Return (\_SB.PCI0.IGPU.NATK ())
             }
 
             If (\_SB.PCI0.PEG0.PEGP.PRST ())
@@ -16840,7 +16840,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                         Local4 <<= 0x04
                         Local3 = LBTN
                         Local3 = (Local4 + Local3)
-                        ^^^GFX0.AINT (One, ((DerefOf (PWAC [Local3]) * 0x64) / 0xFF))
+                        ^^^IGPU.AINT (One, ((DerefOf (PWAC [Local3]) * 0x64) / 0xFF))
                     }
                 }
                 Else
@@ -18377,9 +18377,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         Name (ASBN, Zero)
         Method (SBRN, 0, Serialized)
         {
-            If (^^^GFX0.PRST ())
+            If (^^^IGPU.PRST ())
             {
-                Local0 = ^^^GFX0.GCBL (^^^GFX0.CBLV)
+                Local0 = ^^^IGPU.GCBL (^^^IGPU.CBLV)
                 Local1 = (0x0A - Local0)
                 If ((Local1 != LBTN))
                 {
@@ -18398,14 +18398,14 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             If ((MSOS () >= OSVT))
             {
                 Local0 = LBTN
-                If (^^^GFX0.PRST ())
+                If (^^^IGPU.PRST ())
                 {
-                    If ((^^^GFX0.LCDD._DCS () != 0x1F))
+                    If ((^^^IGPU.LCDD._DCS () != 0x1F))
                     {
                         Return (One)
                     }
 
-                    ^^^GFX0.DWBL ()
+                    ^^^IGPU.DWBL ()
                     ASBN = One
                 }
 
@@ -18476,14 +18476,14 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             If ((MSOS () >= OSVT))
             {
                 Local0 = LBTN
-                If (^^^GFX0.PRST ())
+                If (^^^IGPU.PRST ())
                 {
-                    If ((^^^GFX0.LCDD._DCS () != 0x1F))
+                    If ((^^^IGPU.LCDD._DCS () != 0x1F))
                     {
                         Return (One)
                     }
 
-                    ^^^GFX0.UPBL ()
+                    ^^^IGPU.UPBL ()
                     ASBN = One
                 }
 
@@ -19198,7 +19198,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
                 If ((VGAF & One))
                 {
-                    ^^PCI0.GFX0.CLID = One
+                    ^^PCI0.IGPU.CLID = One
                 }
 
                 Return (Local0)
@@ -19230,9 +19230,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             {
                 Local0 = GLID ()
                 LIDS = Local0
-                If (CondRefOf (\_SB.PCI0.GFX0.GLID))
+                If (CondRefOf (\_SB.PCI0.IGPU.GLID))
                 {
-                    ^^^GFX0.GLID (LIDS)
+                    ^^^IGPU.GLID (LIDS)
                 }
             }
         }
@@ -20994,7 +20994,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         If (Arg0)
         {
             \_SB.PCI0.NPTS (Arg0)
-            \_SB.PCI0.GFX0.OPTS (Arg0)
+            \_SB.PCI0.IGPU.OPTS (Arg0)
             OEMS (Arg0)
         }
     }
@@ -21003,7 +21003,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
     {
         \_SB.PCI0.NWAK (Arg0)
         \_SB.ATKD.GENW (Arg0)
-        \_SB.PCI0.GFX0.OWAK (Arg0)
+        \_SB.PCI0.IGPU.OWAK (Arg0)
         OEMW (Arg0)
     }
 
@@ -21829,7 +21829,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             }
         }
 
-        Device (B0D3)
+        Device (HDAU)
         {
             Name (_ADR, 0x00030000)  // _ADR: Address
             Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -21984,7 +21984,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
             }
         }
 
-        Device (GFX0)
+        Device (IGPU)
         {
             Name (_ADR, 0x00020000)  // _ADR: Address
             OperationRegion (VSID, PCI_Config, Zero, 0x04)
@@ -21995,10 +21995,10 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_DEP, 0, NotSerialized)  // _DEP: Dependencies
             {
-                ADBG ("GFX0 DEP Call")
+                ADBG ("IGPU DEP Call")
                 If ((S0ID == One))
                 {
-                    ADBG ("GFX0 DEP")
+                    ADBG ("IGPU DEP")
                     Return (Package (0x01)
                     {
                         \_SB.PEPD
@@ -22006,7 +22006,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 }
                 Else
                 {
-                    ADBG ("GFX0 DEP NULL")
+                    ADBG ("IGPU DEP NULL")
                     Return (Package (0x00) {})
                 }
             }
@@ -23382,7 +23382,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     LBTN = (0x0A - Local0)
                     If (BRNC)
                     {
-                        \_SB.PCI0.GFX0.AINT (One, Arg0)
+                        \_SB.PCI0.IGPU.AINT (One, Arg0)
                     }
                     Else
                     {
@@ -24061,9 +24061,9 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                         If ((PARM == One))
                         {
                             \_SB.PCI0.AUDE |= 0x20
-                            \_SB.PCI0.B0D3.ASTR ()
-                            \_SB.PCI0.B0D3.AINI ()
-                            \_SB.PCI0.B0D3.CXDC ()
+                            \_SB.PCI0.HDAU.ASTR ()
+                            \_SB.PCI0.HDAU.AINI ()
+                            \_SB.PCI0.HDAU.CXDC ()
                             Notify (\_SB.PCI0, Zero)
                         }
 
@@ -24131,7 +24131,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     }
                     Else
                     {
-                        Notify (\_SB.PCI0.GFX0, Arg1)
+                        Notify (\_SB.PCI0.IGPU, Arg1)
                     }
                 }
 
@@ -24141,7 +24141,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 }
                 Else
                 {
-                    Notify (\_SB.PCI0.GFX0, 0x80)
+                    Notify (\_SB.PCI0.IGPU, 0x80)
                 }
 
                 Return (Zero)
@@ -24343,7 +24343,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                         GSES = One
                     }
 
-                    \_SB.PCI0.GFX0.CLID = One
+                    \_SB.PCI0.IGPU.CLID = One
                 }
             }
 
@@ -25213,12 +25213,12 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     }
 
                     ISMI (0x94)
-                    Notify (\_SB.PCI0.GFX0, 0x81)
+                    Notify (\_SB.PCI0.IGPU, 0x81)
                 }
                 Else
                 {
-                    \_SB.PCI0.GFX0.CEVT = One
-                    \_SB.PCI0.GFX0.CSTS = 0x03
+                    \_SB.PCI0.IGPU.CEVT = One
+                    \_SB.PCI0.IGPU.CSTS = 0x03
                     If ((\_SB.OCAD != \_SB.OPAD))
                     {
                         \_SB.OPAD = \_SB.OCAD
@@ -25228,7 +25228,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                         }
                         Else
                         {
-                            Notify (\_SB.PCI0.GFX0, Zero)
+                            Notify (\_SB.PCI0.IGPU, Zero)
                         }
 
                         Sleep (0x03E8)
@@ -25236,7 +25236,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
                     \_SB.NSTE = AF2D (Arg0)
                     WNDD (\_SB.NSTE)
-                    Notify (\_SB.PCI0.GFX0, 0x80)
+                    Notify (\_SB.PCI0.IGPU, 0x80)
                 }
 
                 Return (Zero)
@@ -25937,14 +25937,14 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
         Method (_DOD, 0, NotSerialized)  // _DOD: Display Output Devices
         {
-            Return (\_SB.PCI0.GFX0._DOD ())
+            Return (\_SB.PCI0.IGPU._DOD ())
         }
 
         Device (DD01)
         {
             Method (_ADR, 0, Serialized)  // _ADR: Address
             {
-                Return (\_SB.PCI0.GFX0.DD01._ADR ())
+                Return (\_SB.PCI0.IGPU.DD01._ADR ())
             }
 
             Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
@@ -25953,7 +25953,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
-                Return (\_SB.PCI0.GFX0.DD01._DGS ())
+                Return (\_SB.PCI0.IGPU.DD01._DGS ())
             }
 
             Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
@@ -25965,7 +25965,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         {
             Method (_ADR, 0, Serialized)  // _ADR: Address
             {
-                Return (\_SB.PCI0.GFX0.DD02._ADR ())
+                Return (\_SB.PCI0.IGPU.DD02._ADR ())
             }
 
             Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
@@ -25974,7 +25974,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
-                Return (\_SB.PCI0.GFX0.DD02._DGS ())
+                Return (\_SB.PCI0.IGPU.DD02._DGS ())
             }
 
             Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
@@ -25986,7 +25986,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         {
             Method (_ADR, 0, Serialized)  // _ADR: Address
             {
-                Return (\_SB.PCI0.GFX0.DD03._ADR ())
+                Return (\_SB.PCI0.IGPU.DD03._ADR ())
             }
 
             Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
@@ -25995,7 +25995,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
-                Return (\_SB.PCI0.GFX0.DD03._DGS ())
+                Return (\_SB.PCI0.IGPU.DD03._DGS ())
             }
 
             Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
@@ -26007,7 +26007,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         {
             Method (_ADR, 0, Serialized)  // _ADR: Address
             {
-                Return (\_SB.PCI0.GFX0.DD04._ADR ())
+                Return (\_SB.PCI0.IGPU.DD04._ADR ())
             }
 
             Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
@@ -26016,7 +26016,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
-                Return (\_SB.PCI0.GFX0.DD04._DGS ())
+                Return (\_SB.PCI0.IGPU.DD04._DGS ())
             }
 
             Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
@@ -26028,7 +26028,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         {
             Method (_ADR, 0, Serialized)  // _ADR: Address
             {
-                Return (\_SB.PCI0.GFX0.DD05._ADR ())
+                Return (\_SB.PCI0.IGPU.DD05._ADR ())
             }
 
             Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
@@ -26037,7 +26037,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
-                Return (\_SB.PCI0.GFX0.DD05._DGS ())
+                Return (\_SB.PCI0.IGPU.DD05._DGS ())
             }
 
             Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
@@ -26049,7 +26049,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         {
             Method (_ADR, 0, Serialized)  // _ADR: Address
             {
-                Return (\_SB.PCI0.GFX0.DD06._ADR ())
+                Return (\_SB.PCI0.IGPU.DD06._ADR ())
             }
 
             Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
@@ -26058,7 +26058,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
-                Return (\_SB.PCI0.GFX0.DD06._DGS ())
+                Return (\_SB.PCI0.IGPU.DD06._DGS ())
             }
 
             Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
@@ -26070,7 +26070,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         {
             Method (_ADR, 0, Serialized)  // _ADR: Address
             {
-                Return (\_SB.PCI0.GFX0.DD07._ADR ())
+                Return (\_SB.PCI0.IGPU.DD07._ADR ())
             }
 
             Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
@@ -26079,7 +26079,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
-                Return (\_SB.PCI0.GFX0.DD07._DGS ())
+                Return (\_SB.PCI0.IGPU.DD07._DGS ())
             }
 
             Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
@@ -26091,7 +26091,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         {
             Method (_ADR, 0, Serialized)  // _ADR: Address
             {
-                Return (\_SB.PCI0.GFX0.DD08._ADR ())
+                Return (\_SB.PCI0.IGPU.DD08._ADR ())
             }
 
             Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
@@ -26100,7 +26100,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
-                Return (\_SB.PCI0.GFX0.DD08._DGS ())
+                Return (\_SB.PCI0.IGPU.DD08._DGS ())
             }
 
             Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
@@ -26112,7 +26112,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         {
             Method (_ADR, 0, Serialized)  // _ADR: Address
             {
-                Return (\_SB.PCI0.GFX0.DD09._ADR ())
+                Return (\_SB.PCI0.IGPU.DD09._ADR ())
             }
 
             Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
@@ -26121,7 +26121,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
-                Return (\_SB.PCI0.GFX0.DD09._DGS ())
+                Return (\_SB.PCI0.IGPU.DD09._DGS ())
             }
 
             Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
@@ -26133,7 +26133,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         {
             Method (_ADR, 0, Serialized)  // _ADR: Address
             {
-                Return (\_SB.PCI0.GFX0.DD0A._ADR ())
+                Return (\_SB.PCI0.IGPU.DD0A._ADR ())
             }
 
             Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
@@ -26142,7 +26142,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
-                Return (\_SB.PCI0.GFX0.DD0A._DGS ())
+                Return (\_SB.PCI0.IGPU.DD0A._DGS ())
             }
 
             Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
@@ -26154,7 +26154,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         {
             Method (_ADR, 0, Serialized)  // _ADR: Address
             {
-                Return (\_SB.PCI0.GFX0.DD0B._ADR ())
+                Return (\_SB.PCI0.IGPU.DD0B._ADR ())
             }
 
             Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
@@ -26163,7 +26163,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
-                Return (\_SB.PCI0.GFX0.DD0B._DGS ())
+                Return (\_SB.PCI0.IGPU.DD0B._DGS ())
             }
 
             Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
@@ -26175,7 +26175,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         {
             Method (_ADR, 0, Serialized)  // _ADR: Address
             {
-                Return (\_SB.PCI0.GFX0.DD0C._ADR ())
+                Return (\_SB.PCI0.IGPU.DD0C._ADR ())
             }
 
             Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
@@ -26184,7 +26184,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
-                Return (\_SB.PCI0.GFX0.DD0C._DGS ())
+                Return (\_SB.PCI0.IGPU.DD0C._DGS ())
             }
 
             Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
@@ -26196,7 +26196,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         {
             Method (_ADR, 0, Serialized)  // _ADR: Address
             {
-                Return (\_SB.PCI0.GFX0.DD0D._ADR ())
+                Return (\_SB.PCI0.IGPU.DD0D._ADR ())
             }
 
             Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
@@ -26205,7 +26205,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
-                Return (\_SB.PCI0.GFX0.DD0D._DGS ())
+                Return (\_SB.PCI0.IGPU.DD0D._DGS ())
             }
 
             Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
@@ -26217,7 +26217,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         {
             Method (_ADR, 0, Serialized)  // _ADR: Address
             {
-                Return (\_SB.PCI0.GFX0.DD0E._ADR ())
+                Return (\_SB.PCI0.IGPU.DD0E._ADR ())
             }
 
             Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
@@ -26226,7 +26226,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
-                Return (\_SB.PCI0.GFX0.DD0E._DGS ())
+                Return (\_SB.PCI0.IGPU.DD0E._DGS ())
             }
 
             Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
@@ -26238,7 +26238,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         {
             Method (_ADR, 0, Serialized)  // _ADR: Address
             {
-                Return (\_SB.PCI0.GFX0.DD0F._ADR ())
+                Return (\_SB.PCI0.IGPU.DD0F._ADR ())
             }
 
             Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
@@ -26247,7 +26247,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
-                Return (\_SB.PCI0.GFX0.DD0F._DGS ())
+                Return (\_SB.PCI0.IGPU.DD0F._DGS ())
             }
 
             Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
@@ -26259,17 +26259,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         {
             Method (_ADR, 0, Serialized)  // _ADR: Address
             {
-                Return (\_SB.PCI0.GFX0.LCDD._ADR ())
+                Return (\_SB.PCI0.IGPU.LCDD._ADR ())
             }
 
             Method (_DCS, 0, NotSerialized)  // _DCS: Display Current Status
             {
-                Return (\_SB.PCI0.GFX0.LCDD._DCS ())
+                Return (\_SB.PCI0.IGPU.LCDD._DCS ())
             }
 
             Method (_DGS, 0, NotSerialized)  // _DGS: Display Graphics State
             {
-                Return (\_SB.PCI0.GFX0.LCDD._DGS ())
+                Return (\_SB.PCI0.IGPU.LCDD._DGS ())
             }
 
             Method (_DSS, 1, NotSerialized)  // _DSS: Device Set State
@@ -26278,17 +26278,17 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
             Method (_BCL, 0, NotSerialized)  // _BCL: Brightness Control Levels
             {
-                Return (\_SB.PCI0.GFX0.LCDD._BCL ())
+                Return (\_SB.PCI0.IGPU.LCDD._BCL ())
             }
 
             Method (_BQC, 0, NotSerialized)  // _BQC: Brightness Query Current
             {
-                Return (\_SB.PCI0.GFX0.LCDD._BQC ())
+                Return (\_SB.PCI0.IGPU.LCDD._BQC ())
             }
 
             Method (_BCM, 1, NotSerialized)  // _BCM: Brightness Control Method
             {
-                \_SB.PCI0.GFX0.LCDD._BCM (Arg0)
+                \_SB.PCI0.IGPU.LCDD._BCM (Arg0)
             }
         }
 
@@ -26436,12 +26436,12 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
 
         Method (DWBL, 0, NotSerialized)
         {
-            Notify (\_SB.PCI0.GFX0.LCDD, 0x87)
+            Notify (\_SB.PCI0.IGPU.LCDD, 0x87)
         }
 
         Method (UPBL, 0, NotSerialized)
         {
-            Notify (\_SB.PCI0.GFX0.LCDD, 0x86)
+            Notify (\_SB.PCI0.IGPU.LCDD, 0x86)
         }
 
         Name (_PSC, Zero)  // _PSC: Power State Current
@@ -26542,7 +26542,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         Method (_DSM, 4, Serialized)  // _DSM: Device-Specific Method
         {
             CreateByteField (Arg0, 0x03, GUID)
-            Return (\_SB.PCI0.GFX0.HDSM (Arg0, Arg1, Arg2, Arg3))
+            Return (\_SB.PCI0.IGPU.HDSM (Arg0, Arg1, Arg2, Arg3))
         }
 
         Name (CTXT, Zero)
@@ -26580,7 +26580,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         }
     }
 
-    Scope (\_SB.PCI0.GFX0)
+    Scope (\_SB.PCI0.IGPU)
     {
         Method (_INI, 0, NotSerialized)  // _INI: Initialize
         {
@@ -26896,7 +26896,7 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                     {
                         Local0 &= 0x0F
                         GPSS = Local0
-                        Notify (\_SB.PCI0.GFX0, 0xD9)
+                        Notify (\_SB.PCI0.IGPU, 0xD9)
                     }
                     Else
                     {
