@@ -17388,6 +17388,204 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         \_SB.PCI0.IGPU.OWAK (Arg0)
         OEMW (Arg0)
     }
+    
+    Method (DTGP, 5, NotSerialized)
+    {
+        If ((Arg0 == ToUUID ("a0b5b7c6-1318-441c-b0c9-fe695eaf949b")))
+        {
+            If ((Arg1 == One))
+            {
+                If ((Arg2 == Zero))
+                {
+                    Arg4 = Buffer (One)
+                        {
+                             0x03                                           
+                        }
+                    Return (One)
+                }
+
+                If ((Arg2 == One))
+                {
+                    Return (One)
+                }
+            }
+        }
+
+        Arg4 = Buffer (One)
+            {
+                 0x00                                           
+            }
+        Return (Zero)
+    }
+
+    Method (B1B2, 2, NotSerialized)
+    {
+        Return ((Arg0 | (Arg1 << 0x08)))
+    }
+    
+    Scope (_SB)
+    {
+        Device (PNLF)
+        {
+            Name (_ADR, Zero)  // _ADR: Address
+            Name (_HID, EisaId ("APP0002"))  // _HID: Hardware ID
+            Name (_CID, "backlight")  // _CID: Compatible ID
+            Name (_UID, 0x0A)  // _UID: Unique ID
+            Name (_STA, 0x0B)  // _STA: Status
+            OperationRegion (BRIT, SystemMemory, (^PCI0.IGPU.BAR1 - 0x04), 0x000E1184)
+            Field (BRIT, AnyAcc, Lock, Preserve)
+            {
+                Offset (0x48250), 
+                LEV2,   32, 
+                LEVL,   32, 
+                Offset (0x70040), 
+                P0BL,   32, 
+                Offset (0xC8250), 
+                LEVW,   32, 
+                LEVX,   32, 
+                Offset (0xE1180), 
+                PCHL,   32
+            }
+
+            Method (_INI, 0, NotSerialized)  // _INI: Initialize
+            {
+                LEVW = 0xC0000000
+                LEVX = 0x0AD90AD9
+            }
+
+            Method (_BCM, 1, NotSerialized)  // _BCM: Brightness Control Method
+            {
+                Local0 = Match (_BCL, MGE, Arg0, MTR, Zero, 0x02)
+                If ((Local0 == Ones))
+                {
+                    Local0 = (SizeOf (_BCL) - One)
+                }
+
+                LEVX = (DerefOf (_BCL [Local0]) | (LEVX & 0xFFFF0000))
+            }
+
+            Method (_BQC, 0, NotSerialized)  // _BQC: Brightness Query Current
+            {
+                Local0 = Match (_BCL, MGE, (LEVX & 0xFFFF), MTR, Zero, 0x02)
+                If ((Local0 == Ones))
+                {
+                    Local0 = (SizeOf (_BCL) - One)
+                }
+
+                Return (DerefOf (_BCL [Local0]))
+            }
+
+            Method (_DOS, 1, NotSerialized)  // _DOS: Disable Output Switching
+            {
+                ^^PCI0.IGPU._DOS (Arg0)
+            }
+
+            Method (XBCM, 1, NotSerialized)
+            {
+                If ((Arg0 > XRGH))
+                {
+                    Arg0 = XRGH
+                }
+
+                If ((Arg0 && (Arg0 < XRGL)))
+                {
+                    Arg0 = XRGL
+                }
+
+                LEVX = (Arg0 | (LEVX & 0xFFFF0000))
+            }
+
+            Method (XBQC, 0, NotSerialized)
+            {
+                Local0 = (LEVX & 0xFFFF)
+                If ((Local0 > XRGH))
+                {
+                    Local0 = XRGH
+                }
+
+                If ((Local0 && (Local0 < XRGL)))
+                {
+                    Local0 = XRGL
+                }
+
+                Return (Local0)
+            }
+
+            Name (XOPT, Zero)
+            Name (XRGL, 0x19)
+            Name (XRGH, 0x0AD9)
+            Name (_BCL, Package (0x43)  // _BCL: Brightness Control Levels
+            {
+                0x0AD9, 
+                0x02EC, 
+                Zero, 
+                0x23, 
+                0x27, 
+                0x2C, 
+                0x32, 
+                0x3A, 
+                0x43, 
+                0x4D, 
+                0x58, 
+                0x65, 
+                0x73, 
+                0x82, 
+                0x93, 
+                0xA5, 
+                0xB8, 
+                0xCC, 
+                0xE2, 
+                0xF9, 
+                0x0111, 
+                0x012B, 
+                0x0146, 
+                0x0162, 
+                0x017F, 
+                0x019E, 
+                0x01BE, 
+                0x01DF, 
+                0x0202, 
+                0x0225, 
+                0x024B, 
+                0x0271, 
+                0x0299, 
+                0x02C2, 
+                0x02EC, 
+                0x0317, 
+                0x0344, 
+                0x0372, 
+                0x03A2, 
+                0x03D2, 
+                0x0404, 
+                0x0437, 
+                0x046C, 
+                0x04A2, 
+                0x04D9, 
+                0x0511, 
+                0x054B, 
+                0x0586, 
+                0x05C2, 
+                0x05FF, 
+                0x063E, 
+                0x067E, 
+                0x06C0, 
+                0x0702, 
+                0x0746, 
+                0x078B, 
+                0x07D2, 
+                0x081A, 
+                0x0863, 
+                0x08AD, 
+                0x08F8, 
+                0x0945, 
+                0x0994, 
+                0x09E3, 
+                0x0A34, 
+                0x0A86, 
+                0x0AD9
+            })
+        }
+    }
 
     Scope (\_SB.PCI0.SAT0)
     {
@@ -18020,6 +18218,50 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
         Device (IGPU)
         {
             Name (_ADR, 0x00020000)  // _ADR: Address
+            Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
+            {
+                Local0 = Package (0x0C)
+                    {
+                        "AAPL00,DualLink", 
+                        Buffer (0x04)
+                        {
+                             0x01, 0x00, 0x00, 0x00                         
+                        }, 
+
+                        "AAPL,ig-platform-id", 
+                        Buffer (0x04)
+                        {
+                             0x06, 0x00, 0x26, 0x0A                         
+                        }, 
+
+                        "AAPL,HasPanel", 
+                        Buffer (0x04)
+                        {
+                             0x01, 0x00, 0x00, 0x00                         
+                        }, 
+
+                        "AAPL,Haslid", 
+                        Buffer (0x04)
+                        {
+                             0x01, 0x00, 0x00, 0x00                         
+                        }, 
+
+                        "AAPL,backlight-control", 
+                        Buffer (0x04)
+                        {
+                             0x01, 0x00, 0x00, 0x00                         
+                        }, 
+
+                        "hda-gfx", 
+                        Buffer (0x0A)
+                        {
+                            "onboard-1"
+                        }
+                    }
+                DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
+                Return (Local0)
+            }
+            
             OperationRegion (VSID, PCI_Config, Zero, 0x04)
             Field (VSID, ByteAcc, NoLock, Preserve)
             {
@@ -19633,6 +19875,12 @@ DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x00000012)
                 LBPC,   8, 
                 Offset (0xBC), 
                 ASLS,   32
+            }
+            
+            OperationRegion (IGD2, PCI_Config, 0x10, 0x04)
+            Field (IGD2, AnyAcc, NoLock, Preserve)
+            {
+                BAR1,   32
             }
 
             OperationRegion (IGDM, SystemMemory, ASLB, 0x2000)
